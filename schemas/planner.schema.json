@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tum-selecting-elective-courses/planner.schema.json",
+  "title": "TUM next-semester elective plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "planning_term", "program", "categories", "courses", "offerings_status", "generated_at"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "planning_term": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current", "target", "method"],
+      "properties": {
+        "current": {"$ref": "#/$defs/term"},
+        "target": {"$ref": "#/$defs/term"},
+        "method": {"enum": ["next_official_tum_semester", "user_override"]},
+        "derived_from": {"type": ["string", "null"], "format": "date"}
+      }
+    },
+    "program": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "source"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "degree": {"type": ["string", "null"]},
+        "curriculum_version_id": {"type": ["string", "integer", "null"]},
+        "source": {"$ref": "#/$defs/source"}
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/category"}
+    },
+    "tracks": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/track"}
+    },
+    "default_selected": {"type": "boolean"},
+    "catalog_audit": {"$ref": "#/$defs/catalog_audit"},
+    "aggregate_requirements": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/aggregate_requirement"}
+    },
+    "courses": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/course"}
+    },
+    "offerings_status": {"enum": ["available", "partial", "unavailable"]},
+    "offerings_message": {"type": ["string", "null"]},
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "selected_source", "other_source", "message"],
+        "properties": {
+          "field": {"type": "string"},
+          "selected_source": {"$ref": "#/$defs/source"},
+          "other_source": {"$ref": "#/$defs/source"},
+          "message": {"type": "string"}
+        }
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "term": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "label"],
+      "properties": {
+        "code": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "term_id": {"type": ["string", "integer", "null"]}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "label", "observed_at"],
+      "properties": {
+        "kind": {"enum": ["my_studies", "module_outline", "public_curriculum", "public_degree_programme", "public_course", "manual"]},
+        "label": {"type": "string", "minLength": 1},
+        "url": {"type": ["string", "null"], "format": "uri"},
+        "observed_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "min_ects", "max_ects", "source"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "min_ects": {"type": ["number", "null"], "minimum": 0},
+        "max_ects": {"type": ["number", "null"], "minimum": 0},
+        "color": {"type": ["string", "null"], "pattern": "^#[0-9A-Fa-f]{6}$"},
+        "source": {"$ref": "#/$defs/source"}
+      }
+    },
+    "track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "group", "source"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "group": {"type": ["string", "null"]},
+        "source": {"$ref": "#/$defs/source"}
+      }
+    },
+    "catalog_audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visible_total", "collected_count", "page_size", "pages_read", "pagination_exhausted", "course_ids"],
+      "properties": {
+        "visible_total": {"type": "integer", "minimum": 0},
+        "collected_count": {"type": "integer", "minimum": 0},
+        "page_size": {"type": "integer", "minimum": 1, "maximum": 100},
+        "pages_read": {"type": "integer", "minimum": 1},
+        "pagination_exhausted": {"type": "boolean"},
+        "course_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "registration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["open", "upcoming", "closed", "none", "unknown"]},
+        "opens_at": {"type": ["string", "null"]},
+        "closes_at": {"type": ["string", "null"]},
+        "label": {"type": ["string", "null"]}
+      }
+    },
+    "aggregate_requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "min_ects", "max_ects", "category_ids", "source"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "min_ects": {"type": ["number", "null"], "minimum": 0},
+        "max_ects": {"type": ["number", "null"], "minimum": 0},
+        "category_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "source": {"$ref": "#/$defs/source"}
+      }
+    },
+    "meeting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["day", "start", "end"],
+      "properties": {
+        "day": {"type": "integer", "minimum": 1, "maximum": 7},
+        "start": {"type": "string", "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$"},
+        "end": {"type": "string", "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$"},
+        "type": {"type": ["string", "null"]},
+        "location": {"type": ["string", "null"]},
+        "weeks": {"type": ["string", "null"]}
+      }
+    },
+    "session_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "meetings"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "meetings": {"type": "array", "items": {"$ref": "#/$defs/meeting"}}
+      }
+    },
+    "course": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "ects", "category_id", "term", "term_id", "status", "session_groups", "source"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "module_code": {"type": ["string", "null"]},
+        "title": {"type": "string", "minLength": 1},
+        "ects": {"type": ["number", "null"], "minimum": 0},
+        "category_id": {"type": ["string", "null"]},
+        "track_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "registration": {"$ref": "#/$defs/registration"},
+        "schedule_status": {"enum": ["published", "unpublished", "unverified"]},
+        "term": {"type": "string", "minLength": 1},
+        "term_id": {"type": ["string", "integer", "null"]},
+        "status": {"enum": ["candidate", "planned", "enrolled"]},
+        "selected_group_id": {"type": ["string", "null"]},
+        "session_groups": {"type": "array", "items": {"$ref": "#/$defs/session_group"}},
+        "source": {"$ref": "#/$defs/source"},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/source"}}
+      }
+    }
+  }
+}

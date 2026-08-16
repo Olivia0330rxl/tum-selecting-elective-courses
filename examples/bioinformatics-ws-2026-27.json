@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "planning_term": {
+    "current": {"code": "SS-2026", "label": "Summer Semester 2026", "term_id": null},
+    "target": {"code": "WS-2026-27", "label": "Winter Semester 2026/27", "term_id": 207},
+    "method": "next_official_tum_semester",
+    "derived_from": "2026-08-16"
+  },
+  "program": {
+    "name": "Bioinformatics",
+    "degree": "Master of Science (joint TUM/LMU)",
+    "curriculum_version_id": 4564,
+    "source": {
+      "kind": "public_course",
+      "label": "TUMonline Courses — Bioinformatics [20161], Master of Science",
+      "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses?curriculumVersionId=4564&objTermId=207&orgId=1",
+      "observed_at": "2026-08-16T14:00:00+08:00"
+    }
+  },
+  "default_selected": true,
+  "catalog_audit": {
+    "visible_total": 22,
+    "collected_count": 22,
+    "page_size": 20,
+    "pages_read": 2,
+    "pagination_exhausted": true,
+    "course_ids": ["950943958", "950945793", "950942355", "950944118", "950945095", "950944738", "950944737", "950942369", "950940757", "950940739", "950943959", "950950228", "950940973", "950942542", "950942367", "950941654", "950940512", "950943031", "950974890", "950940568", "950940135", "950940709"]
+  },
+  "categories": [
+    {"id": "methods-and-research", "label": "Methoden und Forschung", "min_ects": 33, "max_ects": null, "color": "#007C91", "source": {"kind": "public_degree_programme", "label": "TUM CIT Bioinformatics module catalog", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}},
+    {"id": "cs-mathematics-statistics-theory", "label": "Theorie Informatik, Mathematik und Statistik", "min_ects": 15, "max_ects": null, "color": "#D97706", "source": {"kind": "public_degree_programme", "label": "TUM CIT Bioinformatics module catalog", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}},
+    {"id": "biology-biochemistry-chemistry-theory", "label": "Theorie Biologie, Biochemie und Chemie", "min_ects": 15, "max_ects": null, "color": "#15803D", "source": {"kind": "public_degree_programme", "label": "TUM CIT Bioinformatics module catalog", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}}
+  ],
+  "aggregate_requirements": [
+    {"id": "elective-catalogs-total", "label": "Wahlpflichtmodule aus den drei Wahlkatalogen (gesamt)", "min_ects": 78, "max_ects": null, "category_ids": ["methods-and-research", "cs-mathematics-statistics-theory", "biology-biochemistry-chemistry-theory"], "source": {"kind": "public_degree_programme", "label": "TUM CIT Bioinformatics module catalog", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}}
+  ],
+  "courses": [
+    {
+      "id": "module-IN2379", "module_code": "IN2379", "title": "Advanced Data Handling and Visualization Techniques", "ects": 6, "category_id": "methods-and-research", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": "950943958-standard",
+      "session_groups": [{"id": "950943958-standard", "label": "Lecture (verified); exercise component also offered", "meetings": [{"day": 5, "start": "10:00", "end": "12:00", "type": "lecture (VO)", "location": "00.13.009A, Seminarraum (5613.EG.009A)", "weeks": "2026-10-16 to 2027-02-05"}]}],
+      "source": {"kind": "public_course", "label": "TUMonline course 950943958 — lecture", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943958", "observed_at": "2026-08-16T14:00:00+08:00"},
+      "evidence": [{"kind": "public_course", "label": "TUMonline course 950943959 — exercise component", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943959", "observed_at": "2026-08-16T14:00:00+08:00"}, {"kind": "public_degree_programme", "label": "Official catalog — IN2379, 6 ECTS, methods and research", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "course-950945793", "module_code": null, "title": "Advanced Lab Course Bioinformatics", "ects": null, "category_id": null, "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950945793", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945793", "observed_at": "2026-08-16T14:00:00+08:00"}
+    },
+    {
+      "id": "module-IN2309", "module_code": "IN2309", "title": "Advanced Topics of Software Engineering", "ects": 8, "category_id": "cs-mathematics-statistics-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950942355 — main component", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942355", "observed_at": "2026-08-16T14:00:00+08:00"},
+      "evidence": [{"kind": "public_course", "label": "TUMonline course 950945095 — central exercise", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945095", "observed_at": "2026-08-16T14:00:00+08:00"}, {"kind": "public_degree_programme", "label": "Official catalog — IN2309, 8 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "module-IN2403", "module_code": "IN2403", "title": "Artificial Intelligence in Medicine", "ects": 5, "category_id": "cs-mathematics-statistics-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950944118", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944118", "observed_at": "2026-08-16T14:00:00+08:00"}, "evidence": [{"kind": "public_degree_programme", "label": "Official catalog — IN2403, 5 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "module-CIT4230001", "module_code": "CIT4230001", "title": "Computational Modeling for System Genetics", "ects": 4, "category_id": "methods-and-research", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950944737 — lecture", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944737", "observed_at": "2026-08-16T14:00:00+08:00"},
+      "evidence": [{"kind": "public_course", "label": "TUMonline course 950944738 — exercise", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944738", "observed_at": "2026-08-16T14:00:00+08:00"}, {"kind": "public_degree_programme", "label": "Official catalog — CIT4230001, 4 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "module-IN2339", "module_code": "IN2339", "title": "Data Analysis and Visualization in R", "ects": 6, "category_id": "cs-mathematics-statistics-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950942369", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942369", "observed_at": "2026-08-16T14:00:00+08:00"}, "evidence": [{"kind": "public_degree_programme", "label": "Official catalog — IN2339, 6 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "course-IN2030", "module_code": "IN2030", "title": "Data Mining and Knowledge Discovery", "ects": null, "category_id": null, "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950940757; current public module catalog match unresolved", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940757", "observed_at": "2026-08-16T14:00:00+08:00"}
+    },
+    {
+      "id": "module-IN2003", "module_code": "IN2003", "title": "Efficient Algorithms and Data Structures", "ects": 8, "category_id": "cs-mathematics-statistics-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950940739", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940739", "observed_at": "2026-08-16T14:00:00+08:00"}, "evidence": [{"kind": "public_degree_programme", "label": "Official catalog — IN2003, 8 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "module-IN2230", "module_code": "IN2230", "title": "Protein Prediction II for Bioinformaticians", "ects": 8, "category_id": "methods-and-research", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950974890 — main component", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950974890", "observed_at": "2026-08-16T14:00:00+08:00"},
+      "evidence": [{"kind": "public_course", "label": "TUMonline course 950950228 — exercise", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950950228", "observed_at": "2026-08-16T14:00:00+08:00"}, {"kind": "public_degree_programme", "label": "Official catalog — IN2230, 8 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "course-950940973", "module_code": null, "title": "Human biology for teacher students", "ects": null, "category_id": null, "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950940973; curriculum category requires confirmation", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940973", "observed_at": "2026-08-16T14:00:00+08:00"}
+    },
+    {
+      "id": "module-IN2346", "module_code": "IN2346", "title": "Introduction to Deep Learning", "ects": 6, "category_id": "cs-mathematics-statistics-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950942542", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942542", "observed_at": "2026-08-16T14:00:00+08:00"}, "evidence": [{"kind": "public_degree_programme", "label": "Official catalog — IN2346, 6 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "module-IN2064", "module_code": "IN2064", "title": "Machine Learning", "ects": 8, "category_id": "cs-mathematics-statistics-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950942367", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942367", "observed_at": "2026-08-16T14:00:00+08:00"}, "evidence": [{"kind": "public_degree_programme", "label": "Official catalog — IN2064, 8 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "module-ME2648", "module_code": "ME2648", "title": "Molecular Oncology", "ects": 5, "category_id": "biology-biochemistry-chemistry-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950940512 — Molecular Oncology 1", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940512", "observed_at": "2026-08-16T14:00:00+08:00"},
+      "evidence": [{"kind": "public_course", "label": "TUMonline course 950941654 — term paper component", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941654", "observed_at": "2026-08-16T14:00:00+08:00"}, {"kind": "public_degree_programme", "label": "Official catalog — ME2648, 5 ECTS for the module", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "module-IN2361", "module_code": "IN2361", "title": "Natural Language Processing", "ects": 5, "category_id": "cs-mathematics-statistics-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950943031", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943031", "observed_at": "2026-08-16T14:00:00+08:00"}, "evidence": [{"kind": "public_degree_programme", "label": "Official catalog — IN2361, 5 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "course-950940568", "module_code": null, "title": "Proteomics — analytical basics and biomedical applications", "ects": null, "category_id": "biology-biochemistry-chemistry-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950940568", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940568", "observed_at": "2026-08-16T14:00:00+08:00"}, "evidence": [{"kind": "public_degree_programme", "label": "Official catalog contains two Proteomics variants; module code and ECTS need detail confirmation", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "course-950940135", "module_code": "WZ0402", "title": "Structural Bioinformatics", "ects": 5, "category_id": "methods-and-research", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950940135 — lecture and exercise", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940135", "observed_at": "2026-08-16T14:00:00+08:00"}, "evidence": [{"kind": "public_degree_programme", "label": "Official catalog — WZ0402 Strukturbioinformatik, 5 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    },
+    {
+      "id": "module-IN2026", "module_code": "IN2026", "title": "Visual Data Analytics", "ects": 5, "category_id": "cs-mathematics-statistics-theory", "term": "WS-2026-27", "term_id": 207, "status": "candidate", "selected_group_id": null, "session_groups": [],
+      "source": {"kind": "public_course", "label": "TUMonline course 950940709", "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940709", "observed_at": "2026-08-16T14:00:00+08:00"}, "evidence": [{"kind": "public_degree_programme", "label": "Official catalog — IN2026, 5 ECTS", "url": "https://www.cit.tum.de/en/cit/studium/studiengaenge/master-bioinformatik/modulkatalog/", "observed_at": "2026-08-16T14:00:00+08:00"}]
+    }
+  ],
+  "offerings_status": "available",
+  "offerings_message": "Anonymous TUMonline Courses returned 22 target-term rows over two 20-row pages with curriculumVersionId=4564, objTermId=207 and orgId=1. Lecture/exercise and other module components were normalized into 17 candidates so ECTS are not double-counted.",
+  "conflicts": [],
+  "generated_at": "2026-08-16T14:00:00+08:00"
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>TUM next-semester course planner</title>
+  <style>__PLANNER_STYLE__</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__eyebrow" data-i18n="eyebrow">TUM ELECTIVE PLANNER · LOCAL ONLY</div>
+    <div class="hero__top">
+      <div>
+        <h1 id="program-title">Next-semester plan</h1>
+        <p id="program-meta" class="hero__meta"></p>
+      </div>
+      <div class="hero__actions">
+        <button id="language-button" class="button button--ghost" type="button">中文</button>
+        <button id="import-button" class="button button--ghost" type="button" data-i18n="import">Import JSON</button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+        <button id="export-button" class="button button--ghost" type="button" data-i18n="export">Export JSON</button>
+        <button id="print-button" class="button button--light" type="button" data-i18n="print">Print</button>
+      </div>
+    </div>
+    <div class="term-strip">
+      <span class="term-strip__label" data-i18n="planning">Planning</span>
+      <strong id="target-term"></strong>
+      <span id="term-derivation"></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="notice-region" aria-live="polite"></section>
+
+    <section class="workspace" aria-label="Course planning workspace">
+      <aside class="course-panel">
+        <div class="section-heading section-heading--compact">
+          <div>
+            <p class="kicker" data-i18n="coursesKicker">NEXT-SEMESTER OFFERINGS</p>
+            <h2 data-i18n="coursesTitle">Choose courses</h2>
+          </div>
+          <span id="course-count" class="count-chip"></span>
+        </div>
+        <div class="filters">
+          <label class="search-field">
+            <span class="sr-only" data-i18n="searchLabel">Search courses</span>
+            <input id="search-input" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="Search title or module code">
+          </label>
+          <label>
+            <span class="sr-only" data-i18n="categoryLabel">Filter category</span>
+            <select id="category-filter"></select>
+          </label>
+        </div>
+        <div class="bulk-actions">
+          <button id="select-visible-button" class="small-button" type="button" data-i18n="selectVisible">Select visible</button>
+          <button id="clear-visible-button" class="small-button small-button--ghost" type="button" data-i18n="clearVisible">Deselect visible</button>
+        </div>
+        <div id="track-filters" class="track-filters"></div>
+        <div id="course-list" class="course-list"></div>
+      </aside>
+
+      <section class="calendar-panel" aria-labelledby="calendar-title">
+        <div class="section-heading section-heading--compact">
+          <div>
+            <p class="kicker" data-i18n="calendarKicker">WEEKLY VIEW</p>
+            <h2 id="calendar-title" data-i18n="calendarTitle">Your timetable</h2>
+          </div>
+          <span id="conflict-chip" class="conflict-chip"></span>
+        </div>
+        <div class="view-controls">
+          <label><span data-i18n="fontSize">Font size</span><input id="font-scale" type="range" min="80" max="140" value="100" step="5"><output id="font-scale-output">100%</output></label>
+          <label><span data-i18n="calendarWidth">Calendar width</span><input id="calendar-scale" type="range" min="50" max="200" value="70" step="5"><output id="calendar-scale-output">70%</output></label>
+        </div>
+        <div class="calendar-scroll"><div id="calendar" class="calendar"></div></div>
+        <div id="scheduled-summary" class="scheduled-summary"></div>
+        <div id="unscheduled" class="unscheduled"></div>
+      </section>
+    </section>
+
+    <section class="evidence" aria-labelledby="evidence-title">
+      <div class="section-heading section-heading--compact">
+        <div>
+          <p class="kicker" data-i18n="evidenceKicker">TRACEABILITY</p>
+          <h2 id="evidence-title" data-i18n="evidenceTitle">Sources and limitations</h2>
+        </div>
+      </div>
+      <div id="evidence-list" class="evidence-list"></div>
+      <p class="disclaimer" data-i18n="disclaimer">Personal, non-commercial planning support only. Information may be incomplete or incorrect; TUMonline is authoritative.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span data-i18n="localOnly">This file works offline and sends no data.</span>
+    <span id="generated-at"></span>
+  </footer>
+
+  <script id="planner-data" type="application/json">__PLANNER_DATA__</script>
+  <script>__PLANNER_SCRIPT__</script>
+</body>
+</html>

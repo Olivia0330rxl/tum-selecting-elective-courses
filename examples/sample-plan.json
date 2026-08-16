@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "planning_term": {
+    "current": {"code": "SS-2026", "label": "Summer Semester 2026", "term_id": "206"},
+    "target": {"code": "WS-2026-27", "label": "Winter Semester 2026/27", "term_id": "207"},
+    "method": "next_official_tum_semester",
+    "derived_from": "2026-08-16"
+  },
+  "program": {
+    "name": "Example Interdisciplinary Master's Program",
+    "degree": "M.Sc.",
+    "curriculum_version_id": "example-1",
+    "source": {
+      "kind": "module_outline",
+      "label": "Example Module Outline",
+      "url": null,
+      "observed_at": "2026-08-16T09:00:00+08:00"
+    }
+  },
+  "default_selected": true,
+  "catalog_audit": {"visible_total": 5, "collected_count": 5, "page_size": 100, "pages_read": 1, "pagination_exhausted": true, "course_ids": ["course-1", "course-2", "course-3", "course-4", "course-5"]},
+  "categories": [
+    {
+      "id": "foundations",
+      "label": "Foundations",
+      "min_ects": 6,
+      "max_ects": null,
+      "color": null,
+      "source": {"kind": "module_outline", "label": "Example Module Outline", "url": null, "observed_at": "2026-08-16T09:00:00+08:00"}
+    },
+    {
+      "id": "analytics",
+      "label": "Analytics & Modelling",
+      "min_ects": 6,
+      "max_ects": 12,
+      "color": null,
+      "source": {"kind": "module_outline", "label": "Example Module Outline", "url": null, "observed_at": "2026-08-16T09:00:00+08:00"}
+    },
+    {
+      "id": "practice",
+      "label": "Applied Practice",
+      "min_ects": 5,
+      "max_ects": null,
+      "color": "#9B5DE5",
+      "source": {"kind": "module_outline", "label": "Example Module Outline", "url": null, "observed_at": "2026-08-16T09:00:00+08:00"}
+    },
+    {
+      "id": "context",
+      "label": "Society & Context",
+      "min_ects": 3,
+      "max_ects": null,
+      "color": null,
+      "source": {"kind": "module_outline", "label": "Example Module Outline", "url": null, "observed_at": "2026-08-16T09:00:00+08:00"}
+    }
+  ],
+  "courses": [
+    {
+      "id": "course-1",
+      "module_code": "EX1001",
+      "title": "Mathematical Foundations",
+      "ects": 6,
+      "category_id": "foundations",
+      "term": "WS-2026-27",
+      "term_id": "207",
+      "status": "planned",
+      "selected_group_id": "course-1-a",
+      "session_groups": [
+        {"id": "course-1-a", "label": "Group A", "meetings": [{"day": 1, "start": "10:00", "end": "12:00", "type": "Lecture", "location": "Room 101", "weeks": "weekly"}]},
+        {"id": "course-1-b", "label": "Group B", "meetings": [{"day": 2, "start": "14:00", "end": "16:00", "type": "Lecture", "location": "Room 102", "weeks": "weekly"}]}
+      ],
+      "source": {"kind": "public_curriculum", "label": "TUMonline public course page", "url": "https://campus.tum.de/tumonline/", "observed_at": "2026-08-16T09:10:00+08:00"}
+    },
+    {
+      "id": "course-2",
+      "module_code": "EX2002",
+      "title": "Data Modelling Studio",
+      "ects": 6,
+      "category_id": "analytics",
+      "term": "WS-2026-27",
+      "term_id": "207",
+      "status": "candidate",
+      "selected_group_id": "course-2-a",
+      "session_groups": [
+        {"id": "course-2-a", "label": "Studio", "meetings": [{"day": 1, "start": "11:00", "end": "13:00", "type": "Studio", "location": "Lab 2", "weeks": "weekly"}]}
+      ],
+      "source": {"kind": "public_curriculum", "label": "TUMonline public course page", "url": "https://campus.tum.de/tumonline/", "observed_at": "2026-08-16T09:12:00+08:00"}
+    },
+    {
+      "id": "course-3",
+      "module_code": "EX3003",
+      "title": "Interdisciplinary Project",
+      "ects": 5,
+      "category_id": "practice",
+      "term": "WS-2026-27",
+      "term_id": "207",
+      "status": "enrolled",
+      "selected_group_id": "course-3-a",
+      "session_groups": [
+        {"id": "course-3-a", "label": "Project", "meetings": [{"day": 4, "start": "09:00", "end": "12:00", "type": "Project", "location": "Project Hub", "weeks": "biweekly"}]}
+      ],
+      "source": {"kind": "public_degree_programme", "label": "Public Degree Programs target-semester plan", "url": "https://campus.tum.de/tumonline/", "observed_at": "2026-08-16T09:15:00+08:00"}
+    },
+    {
+      "id": "course-4",
+      "module_code": "EX4004",
+      "title": "Ethics of Emerging Systems",
+      "ects": 3,
+      "category_id": "context",
+      "term": "WS-2026-27",
+      "term_id": "207",
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "source": {"kind": "public_curriculum", "label": "TUMonline public course page", "url": "https://campus.tum.de/tumonline/", "observed_at": "2026-08-16T09:18:00+08:00"}
+    },
+    {
+      "id": "course-5",
+      "module_code": "EX5005",
+      "title": "Special Topics",
+      "ects": 3,
+      "category_id": null,
+      "term": "WS-2026-27",
+      "term_id": "207",
+      "status": "candidate",
+      "selected_group_id": "course-5-a",
+      "session_groups": [
+        {"id": "course-5-a", "label": "Seminar", "meetings": [{"day": 5, "start": "12:00", "end": "14:00", "type": "Seminar", "location": null, "weeks": null}]}
+      ],
+      "source": {"kind": "public_curriculum", "label": "TUMonline public course page", "url": "https://campus.tum.de/tumonline/", "observed_at": "2026-08-16T09:20:00+08:00"}
+    }
+  ],
+  "offerings_status": "available",
+  "offerings_message": null,
+  "conflicts": [],
+  "generated_at": "2026-08-16T09:30:00+08:00"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "TUM selecting elective courses"
+  short_description: "Plan public next-semester TUM electives and timetable"
+  default_prompt: "Use $tum-selecting-elective-courses to ask whether I want daily 09:00 updates, read requirements from public Degree Programs, fetch real next-semester offerings from Courses without login, and generate an interactive weekly calendar."

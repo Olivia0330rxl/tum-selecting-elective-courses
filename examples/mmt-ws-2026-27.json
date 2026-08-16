@@ -1,0 +1,3318 @@
+{
+  "schema_version": "1.0",
+  "planning_term": {
+    "current": {
+      "code": "SS-2026",
+      "label": "Summer Semester 2026",
+      "term_id": null
+    },
+    "target": {
+      "code": "WS-2026-27",
+      "label": "Winter Semester 2026/27",
+      "term_id": 207
+    },
+    "method": "next_official_tum_semester",
+    "derived_from": "2026-08-16"
+  },
+  "program": {
+    "name": "Management and Technology",
+    "degree": "Master of Science",
+    "curriculum_version_id": 5386,
+    "source": {
+      "kind": "public_course",
+      "label": "TUMonline Courses — Management and Technology [20251], Master of Science",
+      "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses?curriculumVersionId=5386&objTermId=207&orgId=1",
+      "observed_at": "2026-08-16T19:00:00+08:00"
+    }
+  },
+  "default_selected": true,
+  "catalog_audit": {
+    "visible_total": 106,
+    "collected_count": 106,
+    "page_size": 100,
+    "pages_read": 2,
+    "pagination_exhausted": true,
+    "course_ids": [
+      "950943786",
+      "950942887",
+      "950940783",
+      "950944676",
+      "950976463",
+      "950976464",
+      "950942688",
+      "950942111",
+      "950944204",
+      "950942355",
+      "950940088",
+      "950942596",
+      "950942597",
+      "950941480",
+      "950941215",
+      "950941216",
+      "950940769",
+      "950942804",
+      "950942803",
+      "950940859",
+      "950942800",
+      "950942799",
+      "950940666",
+      "950940350",
+      "950940083",
+      "950946239",
+      "950945095",
+      "950941433",
+      "950944893",
+      "950942443",
+      "950941680",
+      "950943345",
+      "950943407",
+      "950940552",
+      "950943408",
+      "950942369",
+      "950942275",
+      "950942274",
+      "950943770",
+      "950945315",
+      "950944540",
+      "950942466",
+      "950944718",
+      "950942618",
+      "950952069",
+      "950944516",
+      "950940741",
+      "950940868",
+      "950940462",
+      "950940495",
+      "950944543",
+      "950940071",
+      "950940825",
+      "950942663",
+      "950942664",
+      "950941519",
+      "950943633",
+      "950941668",
+      "950941669",
+      "950940683",
+      "950940728",
+      "950942542",
+      "950944691",
+      "950944511",
+      "950944804",
+      "950945441",
+      "950941862",
+      "950941863",
+      "950942617",
+      "950944791",
+      "950941777",
+      "950940120",
+      "950940686",
+      "950941618",
+      "950944544",
+      "950943286",
+      "950941206",
+      "950977628",
+      "950943932",
+      "950941541",
+      "950942985",
+      "950940279",
+      "950942931",
+      "950945839",
+      "950941072",
+      "950940322",
+      "950940317",
+      "950941141",
+      "950940755",
+      "950943138",
+      "950943137",
+      "950940690",
+      "950943470",
+      "950974596",
+      "950942622",
+      "950943829",
+      "950941404",
+      "950941937",
+      "950941938",
+      "950944598",
+      "950946161",
+      "950944538",
+      "950945390",
+      "950941969",
+      "950941666",
+      "950940053"
+    ]
+  },
+  "categories": [
+    {
+      "id": "management",
+      "label": "Management",
+      "min_ects": null,
+      "max_ects": null,
+      "color": "#007C91",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "technology",
+      "label": "Technology",
+      "min_ects": null,
+      "max_ects": null,
+      "color": "#D97706",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "unresolved",
+      "label": "Track mapping pending",
+      "min_ects": null,
+      "max_ects": null,
+      "color": "#64748B",
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline Courses — Management and Technology [20251], Master of Science",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses?curriculumVersionId=5386&objTermId=207&orgId=1",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "id": "management",
+      "label": "Management electives",
+      "group": "Management",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "informatics",
+      "label": "Informatics",
+      "group": "Technology option",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "chemistry",
+      "label": "Chemistry",
+      "group": "Technology option",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "electrical",
+      "label": "Electrical & Information Technology",
+      "group": "Technology option",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "mechanical",
+      "label": "Mechanical Engineering",
+      "group": "Technology option",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "computer-engineering",
+      "label": "Computer Engineering",
+      "group": "Technology option",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "industrial",
+      "label": "Industrial Engineering",
+      "group": "Technology option",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "sustainable-energies",
+      "label": "Sustainable Energies",
+      "group": "Technology option",
+      "source": {
+        "kind": "public_degree_programme",
+        "label": "TUM School of Management — MMT management specializations and technology options",
+        "url": "https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    }
+  ],
+  "aggregate_requirements": [],
+  "courses": [
+    {
+      "id": "950943786",
+      "module_code": null,
+      "title": "Course 0000005567 (title truncated in TUMonline list)",
+      "ects": null,
+      "category_id": "unresolved",
+      "track_ids": [],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943786 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943786",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942887",
+      "module_code": null,
+      "title": "Advanced Analytical Techniques (CH4115)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942887 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942887",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940783",
+      "module_code": null,
+      "title": "Advanced Computer Architecture (IN2076)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940783 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940783",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944676",
+      "module_code": null,
+      "title": "Advanced Concepts of Programming Languages (CIT3230000)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944676 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944676",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950976463",
+      "module_code": null,
+      "title": "Advanced Environmental and Natural Resource Economics - Lecture (WZ2757, English)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950976463 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950976463",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950976464",
+      "module_code": null,
+      "title": "Advanced Environmental and Natural Resource Economics - Seminar (WZ2757, English)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950976464 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950976464",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942688",
+      "module_code": null,
+      "title": "Advanced Practical Course - Developing innovative services at the example of SAP technologies (IN2128, IN2106, IN212802)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942688 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942688",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942111",
+      "module_code": null,
+      "title": "Advanced Seminar - Digital Transformation (IN2107, IN2396, IN4831)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942111 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942111",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944204",
+      "module_code": null,
+      "title": "Advanced Seminar Economics & Policy (MGT001313, English): Productivity, Efficiency and Risk (Limited Places)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944204 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944204",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942355",
+      "module_code": null,
+      "title": "Advanced Topics of SW Engineering (IN2309, IN2126)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942355 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942355",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940088",
+      "module_code": null,
+      "title": "Analytical Chemistry (CH0107)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940088 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940088",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942596",
+      "module_code": null,
+      "title": "Applied Statistics and Econometrics (WZ1705, English)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942596 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942596",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942597",
+      "module_code": null,
+      "title": "Applied Statistics and Econometrics (WZ1705, English)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942597 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942597",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941480",
+      "module_code": null,
+      "title": "Automatic Control - Revision Course",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "electrical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-08-28",
+        "closes_at": null,
+        "label": "Registration possible from 28.08.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941480 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941480",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941215",
+      "module_code": null,
+      "title": "Basic Principles: Operating Systems and System Software, Exercise Session (IN0009)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941215 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941215",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941216",
+      "module_code": null,
+      "title": "Basic Principles: Operating Systems and System Software, Exercise Session (IN0009)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941216 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941216",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940769",
+      "module_code": null,
+      "title": "Basic Principles: Operating Systems and System Software (IN0009)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-07",
+        "closes_at": null,
+        "label": "Registration possible from 07.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940769 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940769",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942804",
+      "module_code": null,
+      "title": "Basics of Electrical Energy Storage",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "electrical",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-01",
+        "closes_at": null,
+        "label": "Registration possible from 01.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942804 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942804",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942803",
+      "module_code": null,
+      "title": "Basics of Electrical Energy Storage",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "electrical",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-01",
+        "closes_at": null,
+        "label": "Registration possible from 01.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942803 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942803",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940859",
+      "module_code": null,
+      "title": "Basics of Physical Chemistry 1, Exercise (CH1091/CH7201)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940859 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940859",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942800",
+      "module_code": null,
+      "title": "Batteriespeicher",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-01",
+        "closes_at": null,
+        "label": "Registration possible from 01.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942800 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942800",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942799",
+      "module_code": null,
+      "title": "Batteriespeicher",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-01",
+        "closes_at": null,
+        "label": "Registration possible from 01.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942799 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942799",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940666",
+      "module_code": null,
+      "title": "Biochemistry, Exercises (CH4117)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940666 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940666",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940350",
+      "module_code": null,
+      "title": "Biological Chemistry and Biochemistry (CH4117)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940350 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940350",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940083",
+      "module_code": null,
+      "title": "Biology for Chemists (CH0106)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940083 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940083",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950946239",
+      "module_code": null,
+      "title": "Bioprocess Engineering",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "industrial"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950946239 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950946239",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950945095",
+      "module_code": null,
+      "title": "Central Exercise: Advanced Topics of Software Engineering (IN2309, IN2126)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950945095 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945095",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941433",
+      "module_code": null,
+      "title": "Clinical Applications of Computational Medicine",
+      "ects": null,
+      "category_id": "unresolved",
+      "track_ids": [],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "open",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "Course open for registration"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941433 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941433",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944893",
+      "module_code": null,
+      "title": "Cloud Information Systems (CIT3230002)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944893 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944893",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942443",
+      "module_code": null,
+      "title": "Communication Acoustics",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "electrical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942443 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942443",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941680",
+      "module_code": null,
+      "title": "Communication Networks",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "electrical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-09",
+        "closes_at": null,
+        "label": "Registration possible from 09.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941680 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941680",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943345",
+      "module_code": null,
+      "title": "Construction Chemicals and Materials 1 - Inorganic Binders (CH3151a)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943345 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943345",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943407",
+      "module_code": null,
+      "title": "Construction Chemicals and Materials 1 - Inorganic Binders (CH3151b)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943407 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943407",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940552",
+      "module_code": null,
+      "title": "Construction Chemicals 1",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940552 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940552",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943408",
+      "module_code": null,
+      "title": "Construction Chemistry 1 (CH3153b)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943408 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943408",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942369",
+      "module_code": null,
+      "title": "Data Analysis and Visualization in R (IN2339)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942369 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942369",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942275",
+      "module_code": null,
+      "title": "Data Driven Innovation",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942275 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942275",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942274",
+      "module_code": null,
+      "title": "Data Driven Innovations",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942274 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942274",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943770",
+      "module_code": null,
+      "title": "Data Networking",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "electrical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-09",
+        "closes_at": null,
+        "label": "Registration possible from 09.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943770 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943770",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950945315",
+      "module_code": null,
+      "title": "Development of Wind Energy Projects",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "industrial",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950945315 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945315",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944540",
+      "module_code": null,
+      "title": "Development of Wind Energy Projects",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "industrial",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944540 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944540",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942466",
+      "module_code": null,
+      "title": "Econometric Impact Analysis (WZ1564, English)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942466 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942466",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944718",
+      "module_code": null,
+      "title": "Exercise - Advanced Concepts of Programming Languages (CIT3230000)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944718 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944718",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942618",
+      "module_code": null,
+      "title": "Exercise Course to Materials Sciences (MS&E)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "mechanical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942618 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942618",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950952069",
+      "module_code": null,
+      "title": "Extended Reality for Value Creation for Businesses (MGT001523, English) (Limited places)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management",
+        "industrial"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "unknown",
+        "opens_at": null,
+        "closes_at": null,
+        "label": null
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950952069 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950952069",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944516",
+      "module_code": null,
+      "title": "Fundamentals of Artificial Intelligence (IN2406)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944516 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944516",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940741",
+      "module_code": null,
+      "title": "Fundamentals of Databases (IN0008)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940741 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940741",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940868",
+      "module_code": null,
+      "title": "Fundamentals of Physical Chemistry 1 (CH1091/CH7201)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940868 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940868",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940462",
+      "module_code": null,
+      "title": "General and Inorganic Chemistry (CH6202a)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940462 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940462",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940495",
+      "module_code": null,
+      "title": "General and Inorganic Chemistry, Exercises (CH6202b)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940495 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940495",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944543",
+      "module_code": null,
+      "title": "Hydrogen Mobility",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944543 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944543",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940071",
+      "module_code": null,
+      "title": "Industrial Chemical Processes 1 - Catalysis for Energy (CH3094)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry",
+        "industrial",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940071 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940071",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940825",
+      "module_code": null,
+      "title": "Industrial Energy Economy",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management",
+        "industrial",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-01",
+        "closes_at": null,
+        "label": "Registration possible from 01.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940825 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940825",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942663",
+      "module_code": null,
+      "title": "Inorganic Solid State and Organometallic Chemistry (CH4107)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942663 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942663",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942664",
+      "module_code": null,
+      "title": "Inorganic Solid State and Organometallic Chemistry (CH4107)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942664 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942664",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941519",
+      "module_code": null,
+      "title": "Inside my iPhone - Technology analysis of a smart phone",
+      "ects": null,
+      "category_id": "unresolved",
+      "track_ids": [],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-23",
+        "closes_at": null,
+        "label": "Registration possible from 23.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941519 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941519",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943633",
+      "module_code": null,
+      "title": "Interdisciplinary Project X",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "industrial"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943633 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943633",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941668",
+      "module_code": null,
+      "title": "Introduction in Flight System Dynamics and Flight Control",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "electrical",
+        "mechanical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-08-17",
+        "closes_at": null,
+        "label": "Registration possible from 17.08.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941668 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941668",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941669",
+      "module_code": null,
+      "title": "Introduction in Flight System Dynamics and Flight Control",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "electrical",
+        "mechanical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-08-17",
+        "closes_at": null,
+        "label": "Registration possible from 17.08.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941669 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941669",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940683",
+      "module_code": null,
+      "title": "Introduction into Computer Science (for non Informatics studies, TUM BWL) (IN8005)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940683 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940683",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940728",
+      "module_code": null,
+      "title": "Introduction to Computer Architecture (IN0004)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940728 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940728",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942542",
+      "module_code": null,
+      "title": "Introduction to Deep Learning (IN2346)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "open",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "Course open for registration"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942542 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942542",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944691",
+      "module_code": null,
+      "title": "Introduction to Programming (CIT5230000)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944691 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944691",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944511",
+      "module_code": null,
+      "title": "IT Sicherheit (IN0042)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "open",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "Course open for registration"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944511 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944511",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944804",
+      "module_code": null,
+      "title": "Lab Energy Informatics",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering",
+        "electrical",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-01",
+        "closes_at": null,
+        "label": "Registration possible from 01.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944804 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944804",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950945441",
+      "module_code": null,
+      "title": "Machine Learning in Energy Management",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management",
+        "informatics",
+        "computer-engineering",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-01",
+        "closes_at": null,
+        "label": "Registration possible from 01.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950945441 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945441",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941862",
+      "module_code": null,
+      "title": "Materials and Process Technologies for Carbon Composites",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "mechanical",
+        "industrial"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941862 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941862",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941863",
+      "module_code": null,
+      "title": "Materials and Process Technologies for Carbon Composites",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "mechanical",
+        "industrial"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941863 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941863",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942617",
+      "module_code": null,
+      "title": "Materials Sciences (MS&E)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "mechanical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942617 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942617",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944791",
+      "module_code": null,
+      "title": "Molecular Medicine (CH0226)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944791 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944791",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941777",
+      "module_code": null,
+      "title": "Nanosystems",
+      "ects": null,
+      "category_id": "unresolved",
+      "track_ids": [],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "open",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "Course open for registration"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941777 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941777",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940120",
+      "module_code": null,
+      "title": "Network Planning",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "electrical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-09",
+        "closes_at": null,
+        "label": "Registration possible from 09.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940120 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940120",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940686",
+      "module_code": null,
+      "title": "Network Security (IN2101)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering",
+        "electrical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940686 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940686",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941618",
+      "module_code": null,
+      "title": "Pharmaceutical Radiochemistry 1 (CH3301)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941618 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941618",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944544",
+      "module_code": null,
+      "title": "Piston Engines 1",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "mechanical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944544 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944544",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943286",
+      "module_code": null,
+      "title": "(POL60102) Science Communication and Public Engagement",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management",
+        "electrical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943286 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943286",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941206",
+      "module_code": null,
+      "title": "(POL70044) Business Ethics",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941206 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941206",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950977628",
+      "module_code": null,
+      "title": "(POL700450) Master Seminar Business Ethics",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950977628 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950977628",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943932",
+      "module_code": null,
+      "title": "(POL7004511) Master Seminar Business Ethics",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943932 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943932",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941541",
+      "module_code": null,
+      "title": "Practical Course - Designing IT-based Learning (IN0012, IN4138)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941541 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941541",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942985",
+      "module_code": null,
+      "title": "Practical Course - Internet Lab - IlabX (IN0012, IN2106, IN4240)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "unknown",
+        "opens_at": null,
+        "closes_at": null,
+        "label": null
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942985 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942985",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940279",
+      "module_code": null,
+      "title": "Practical Course - iPraktikum, iOS Praktikum (IN0012, IN2106, IN2175, IN2128, IN4049)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940279 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940279",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942931",
+      "module_code": null,
+      "title": "Praktikum - Interactive Learning (IN0012, IN2106, IN2175, IN4234)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942931 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942931",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950945839",
+      "module_code": null,
+      "title": "Project Course Health Economics",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management",
+        "industrial"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "open",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "Course open for registration"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950945839 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945839",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941072",
+      "module_code": null,
+      "title": "Project: Economic aspects of Nanotechnology",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management",
+        "industrial"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "open",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "Course open for registration"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941072 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941072",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940322",
+      "module_code": null,
+      "title": "Reactivity of Organic Compounds (CH0115)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940322 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940322",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940317",
+      "module_code": null,
+      "title": "Reactivity of Organic Compounds, Exercises (CH0115)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940317 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940317",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941141",
+      "module_code": null,
+      "title": "Real-Time Systems, Exercise Session (IN2060)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941141 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941141",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940755",
+      "module_code": null,
+      "title": "Real-Time Systems (IN2060)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940755 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940755",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943138",
+      "module_code": null,
+      "title": "Risk Theory and Modeling - Exercises (WZ0043, English)",
+      "ects": null,
+      "category_id": "unresolved",
+      "track_ids": [],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943138 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943138",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943137",
+      "module_code": null,
+      "title": "Risk Theory and Modeling - Lecture (WZ0043, English)",
+      "ects": null,
+      "category_id": "unresolved",
+      "track_ids": [],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943137 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943137",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940690",
+      "module_code": null,
+      "title": "Robotics (IN2067)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940690 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940690",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943470",
+      "module_code": null,
+      "title": "Scientific Seminar on Energy Economy and Application Technology",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-09-01",
+        "closes_at": null,
+        "label": "Registration possible from 01.09.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943470 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943470",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950974596",
+      "module_code": null,
+      "title": "Seminar - Behavioral Insights in the Age of Big Data (IN0014, IN2107, IN2396, IN4424)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "unknown",
+        "opens_at": null,
+        "closes_at": null,
+        "label": null
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950974596 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950974596",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950942622",
+      "module_code": null,
+      "title": "Seminar - Security and Privacy Economics (IN0014, IN2107, IN2396, IN4892)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management",
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "unknown",
+        "opens_at": null,
+        "closes_at": null,
+        "label": null
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950942622 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942622",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950943829",
+      "module_code": null,
+      "title": "Seminar Health Care Management",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "open",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "Course open for registration"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950943829 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943829",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941404",
+      "module_code": null,
+      "title": "Software Engineering in Industrial Practice (IN2235)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "informatics",
+        "computer-engineering",
+        "industrial"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-08-30",
+        "closes_at": null,
+        "label": "Registration possible from 30.08.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941404 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941404",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941937",
+      "module_code": null,
+      "title": "Sponsorship-linked marketing (online-course)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "open",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "Course open for registration"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941937 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941937",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941938",
+      "module_code": null,
+      "title": "Sponsorship-linked marketing (online-Kurs)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "open",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "Course open for registration"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941938 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941938",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944598",
+      "module_code": null,
+      "title": "Strategic IT Management (CIT4230000)",
+      "ects": null,
+      "category_id": "management",
+      "track_ids": [
+        "management",
+        "informatics",
+        "computer-engineering"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-08-30",
+        "closes_at": null,
+        "label": "Registration possible from 30.08.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944598 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944598",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950946161",
+      "module_code": null,
+      "title": "Sustainability in Automotive Engineering",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "mechanical"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950946161 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950946161",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950944538",
+      "module_code": null,
+      "title": "Sustainable Mobile Drivetrains",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "mechanical",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950944538 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944538",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950945390",
+      "module_code": null,
+      "title": "Sustainable production engineering and product development",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "mechanical",
+        "industrial",
+        "sustainable-energies"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": "950945390-published",
+      "session_groups": [
+        {
+          "id": "950945390-published",
+          "label": "Published dates",
+          "meetings": [
+            {
+              "day": 2,
+              "start": "10:00",
+              "end": "12:00",
+              "type": "course meeting",
+              "location": null,
+              "weeks": "2026-10-13 to 2027-02-02"
+            },
+            {
+              "day": 4,
+              "start": "12:00",
+              "end": "13:00",
+              "type": "course meeting",
+              "location": null,
+              "weeks": "2026-10-15 to 2027-02-04"
+            }
+          ]
+        }
+      ],
+      "schedule_status": "published",
+      "registration": {
+        "status": "upcoming",
+        "opens_at": "2026-08-30",
+        "closes_at": null,
+        "label": "Registration possible from 30.08.2026"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950945390 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945390",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941969",
+      "module_code": null,
+      "title": "Think.Make.Start.",
+      "ects": null,
+      "category_id": "unresolved",
+      "track_ids": [],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941969 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941969",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950941666",
+      "module_code": null,
+      "title": "Uncertainty Modeling in Engineering (Vorlesung + Übung)",
+      "ects": null,
+      "category_id": "unresolved",
+      "track_ids": [],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950941666 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941666",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    },
+    {
+      "id": "950940053",
+      "module_code": null,
+      "title": "Water Chemistry I (CH1062)",
+      "ects": null,
+      "category_id": "technology",
+      "track_ids": [
+        "chemistry"
+      ],
+      "term": "WS-2026-27",
+      "term_id": 207,
+      "status": "candidate",
+      "selected_group_id": null,
+      "session_groups": [],
+      "schedule_status": "unverified",
+      "registration": {
+        "status": "none",
+        "opens_at": null,
+        "closes_at": null,
+        "label": "No registration procedures for this course"
+      },
+      "source": {
+        "kind": "public_course",
+        "label": "TUMonline course 950940053 — target-term list row",
+        "url": "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940053",
+        "observed_at": "2026-08-16T19:00:00+08:00"
+      }
+    }
+  ],
+  "offerings_status": "partial",
+  "offerings_message": "Course index complete (106/106). One Dates and Groups detail was verified; remaining course details are explicitly marked unverified, not unpublished. Track buttons demonstrate the interaction, but per-course assignments inferred from titles/module codes must be replaced with Degree Program curriculum-tree evidence before publication.",
+  "conflicts": [],
+  "generated_at": "2026-08-16T19:00:00+08:00"
+}

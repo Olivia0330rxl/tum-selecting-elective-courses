@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>TUM next-semester course planner</title>
+  <style>:root {
+  --ink: #18231f;
+  --muted: #65736d;
+  --paper: #f6f4ee;
+  --card: #fffefb;
+  --line: #d9ded8;
+  --brand: #0b574a;
+  --brand-dark: #073f36;
+  --brand-pale: #dcebe6;
+  --danger: #b02f37;
+  --danger-pale: #f9e4e5;
+  --warning: #8a5b00;
+  --warning-pale: #fff0c7;
+  --radius: 18px;
+  --shadow: 0 12px 30px rgba(24, 35, 31, .08);
+  --calendar-width: 70%;
+  font-size: 100%;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: var(--paper); font-size: 1rem; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+.hero {
+  padding: 34px clamp(20px, 5vw, 74px) 30px;
+  color: white;
+  background:
+    radial-gradient(circle at 88% 0%, rgba(90, 203, 165, .28), transparent 34%),
+    linear-gradient(125deg, var(--brand-dark), var(--brand));
+}
+.hero__eyebrow, .kicker { font-size: .72rem; font-weight: 800; letter-spacing: .14em; }
+.hero__eyebrow { color: #bde4d8; margin-bottom: 14px; }
+.hero__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { max-width: 760px; margin-bottom: 7px; font-size: clamp(2rem, 4.3vw, 4rem); line-height: 1.03; letter-spacing: -.04em; }
+h2 { margin-bottom: 0; font-size: 1.45rem; letter-spacing: -.025em; }
+.hero__meta { margin-bottom: 0; color: #d4e8e2; }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.button { border: 1px solid transparent; border-radius: 999px; padding: 9px 14px; font-size: .84rem; font-weight: 750; }
+.button--ghost { color: white; border-color: rgba(255,255,255,.32); background: rgba(255,255,255,.08); }
+.button--light { color: var(--brand-dark); background: white; }
+.button:hover { transform: translateY(-1px); }
+.term-strip { display: flex; flex-wrap: wrap; align-items: baseline; gap: 9px; margin-top: 32px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.18); color: #d4e8e2; }
+.term-strip__label { padding: 5px 9px; color: var(--brand-dark); background: #bde4d8; border-radius: 999px; font-size: .74rem; font-weight: 800; text-transform: uppercase; }
+.term-strip strong { color: white; font-size: 1.12rem; }
+
+main { display: grid; gap: 34px; padding: 34px clamp(16px, 4vw, 64px) 48px; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 16px; }
+.section-heading--compact { align-items: center; }
+.kicker { margin-bottom: 6px; color: var(--brand); }
+.total-chip, .count-chip, .conflict-chip { white-space: nowrap; border-radius: 999px; padding: 7px 11px; font-size: .78rem; font-weight: 800; background: var(--brand-pale); color: var(--brand-dark); }
+.conflict-chip.has-conflict { color: var(--danger); background: var(--danger-pale); }
+
+.notice { margin-bottom: 12px; padding: 14px 17px; border: 1px solid #e8cf92; border-radius: 13px; background: var(--warning-pale); color: #6a4700; }
+.notice--danger { border-color: #e0a3a7; color: #7f1e25; background: var(--danger-pale); }
+
+.progress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.progress-card { position: relative; overflow: hidden; padding: 17px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.progress-card--aggregate { border-style: dashed; }
+.progress-card::before { position: absolute; inset: 0 auto 0 0; width: 5px; content: ""; background: var(--category-color); }
+.progress-card__top { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+.progress-card h3 { margin-bottom: 4px; font-size: .98rem; }
+.progress-card__number { font-size: 1.35rem; font-weight: 850; }
+.progress-card__rule { min-height: 1.2em; color: var(--muted); font-size: .76rem; }
+.progress-track { height: 7px; margin-top: 14px; overflow: hidden; border-radius: 999px; background: #e8ece8; }
+.progress-track span { display: block; height: 100%; border-radius: inherit; background: var(--category-color); }
+
+.workspace { display: grid; grid-template-columns: minmax(290px, 390px) minmax(620px, 1fr); gap: 18px; align-items: start; }
+.course-panel, .calendar-panel, .evidence { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.course-panel, .calendar-panel { padding: 20px; }
+.filters { display: grid; grid-template-columns: 1fr minmax(130px, .55fr); gap: 8px; margin-bottom: 13px; }
+.bulk-actions { display: flex; gap: 7px; margin: -3px 0 12px; }
+.small-button { border: 1px solid var(--brand); border-radius: 999px; padding: 6px 10px; color: white; background: var(--brand); font-size: .72rem; font-weight: 800; }
+.small-button--ghost { color: var(--brand); background: transparent; }
+.track-filters { display: grid; gap: 8px; margin-bottom: 13px; }
+.track-group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.track-group__label { width: 100%; color: var(--muted); font-size: .7rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+.track-chip { border: 1px solid var(--line); border-radius: 999px; padding: 5px 9px; color: var(--muted); background: white; font-size: .7rem; font-weight: 800; }
+.track-chip.is-active { border-color: var(--brand); color: white; background: var(--brand); }
+input, select { width: 100%; min-height: 42px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 11px; color: var(--ink); background: white; }
+input:focus, select:focus, button:focus-visible { outline: 3px solid rgba(30, 129, 106, .28); outline-offset: 1px; }
+.course-list { display: grid; gap: 9px; max-height: 740px; overflow: auto; padding-right: 3px; }
+.course-card { padding: 13px; border: 1px solid var(--line); border-left: 5px solid var(--category-color); border-radius: 13px; background: #fff; }
+.course-card.is-selected { background: #f7fbf9; }
+.course-card__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.course-card__code { color: var(--muted); font-size: .72rem; font-weight: 750; letter-spacing: .04em; }
+.course-card h3 { margin: 3px 0 7px; font-size: .94rem; line-height: 1.25; }
+.course-card__meta { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 9px; }
+.tag { border-radius: 999px; padding: 4px 7px; color: #4d5a55; background: #edf0ed; font-size: .68rem; font-weight: 750; }
+.tag--unclassified { color: var(--warning); background: var(--warning-pale); }
+.tag--registration { color: #075985; background: #e0f2fe; }
+.tag--registration.is-open { color: #166534; background: #dcfce7; }
+.tag--registration.is-upcoming { color: #92400e; background: #fef3c7; }
+.status-button { flex: 0 0 auto; border: 1px solid var(--brand); border-radius: 999px; padding: 6px 9px; color: var(--brand); background: transparent; font-size: .72rem; font-weight: 800; }
+.status-button.is-selected { color: white; background: var(--brand); }
+.status-button:disabled { cursor: default; color: #46615a; border-color: #aac3bc; background: #e4efeb; }
+.group-select { margin-top: 7px; min-height: 34px; padding-block: 5px; font-size: .76rem; }
+
+.view-controls { display: flex; flex-wrap: wrap; gap: 14px 22px; margin: -4px 0 14px; padding: 10px 12px; border-radius: 12px; background: #f2f6f4; }
+.view-controls label { display: grid; grid-template-columns: auto minmax(100px, 180px) 44px; align-items: center; gap: 8px; color: var(--muted); font-size: .72rem; font-weight: 750; }
+.view-controls input { min-height: 0; padding: 0; }
+.view-controls output { color: var(--ink); font-variant-numeric: tabular-nums; }
+.calendar { display: grid; grid-template-columns: repeat(7, minmax(92px, 1fr)); width: var(--calendar-width); min-width: calc(690px * .7); overflow: hidden; border: 1px solid var(--line); border-radius: 14px; transition: width .15s ease; }
+.calendar-scroll { overflow-x: auto; padding-bottom: 5px; }
+.day-column { position: relative; min-height: 650px; border-left: 1px solid var(--line); background: repeating-linear-gradient(to bottom, transparent 0, transparent 53px, #edf0ed 54px); }
+.day-column:first-child { border-left: 0; }
+.day-title { position: sticky; top: 0; z-index: 4; height: 40px; padding: 11px 7px; border-bottom: 1px solid var(--line); text-align: center; background: #f2f6f4; font-size: .72rem; font-weight: 850; }
+.event { position: absolute; z-index: 2; left: 5px; right: 5px; min-height: 92px; overflow: visible; overflow-wrap: anywhere; padding: 6px; border-left: 4px solid var(--category-color); border-radius: 8px; color: #1b2723; background: color-mix(in srgb, var(--category-color) 18%, white); font-size: .67rem; line-height: 1.25; box-shadow: 0 3px 8px rgba(24,35,31,.08); }
+.event:hover, .event:focus-within { z-index: 5; box-shadow: 0 8px 20px rgba(24,35,31,.2); }
+.event strong { display: block; margin-bottom: 2px; white-space: normal; }
+.event__registration { display: block; margin-top: 3px; font-size: .61rem; font-weight: 800; }
+.event.is-conflict { outline: 2px solid var(--danger); background: var(--danger-pale); }
+.scheduled-summary { margin-top: 14px; }
+.scheduled-summary h3 { margin-bottom: 8px; font-size: .9rem; }
+.scheduled-summary-list { display: grid; gap: 7px; }
+.scheduled-summary-item { display: grid; grid-template-columns: minmax(220px, 1fr) auto; gap: 6px 14px; padding: 9px 11px; border-left: 4px solid var(--category-color); border-radius: 8px; background: #eef2ef; font-size: .76rem; }
+.scheduled-summary-item strong { min-width: 0; overflow-wrap: anywhere; }
+.scheduled-summary-item span, .scheduled-summary-item small { color: var(--muted); }
+.scheduled-summary-item small { grid-column: 1 / -1; }
+.unscheduled { margin-top: 14px; }
+.unscheduled h3 { margin-bottom: 8px; font-size: .9rem; }
+.unscheduled-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.unscheduled-item { display: grid; gap: 3px; padding: 7px 9px; border-left: 4px solid var(--category-color); border-radius: 7px; background: #eef2ef; font-size: .74rem; }
+.unscheduled-item small { color: var(--muted); }
+
+.evidence { padding: 20px; }
+.evidence-list { display: grid; gap: 8px; }
+.evidence-item { display: grid; grid-template-columns: 150px 1fr auto; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: .8rem; }
+.evidence-item:first-child { border-top: 0; }
+.evidence-kind { font-weight: 800; text-transform: capitalize; }
+.evidence-time { color: var(--muted); }
+.evidence a { color: var(--brand); }
+.disclaimer { margin: 16px 0 0; color: var(--muted); font-size: .76rem; }
+.empty-state { padding: 26px 12px; color: var(--muted); text-align: center; }
+
+footer { display: flex; justify-content: space-between; gap: 20px; padding: 22px clamp(16px, 4vw, 64px); border-top: 1px solid var(--line); color: var(--muted); font-size: .75rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+@media (max-width: 1050px) {
+  .workspace { grid-template-columns: 1fr; }
+  .course-list { max-height: 520px; }
+  .calendar-panel { overflow: hidden; }
+}
+@media (max-width: 700px) {
+  .hero__top { display: block; }
+  .hero__actions { justify-content: flex-start; margin-top: 20px; }
+  .filters { grid-template-columns: 1fr; }
+  .evidence-item { grid-template-columns: 1fr; gap: 4px; }
+  .scheduled-summary-item { grid-template-columns: 1fr; }
+  .scheduled-summary-item small { grid-column: auto; }
+  footer { display: grid; }
+}
+@media print {
+  :root { background: white; }
+  .hero { padding: 20px; color: var(--ink); background: white; border-bottom: 2px solid var(--ink); }
+  .hero__eyebrow, .hero__meta, .term-strip, .kicker { color: var(--ink); }
+  .hero__actions, .filters, .bulk-actions, .track-filters, .view-controls, .status-button, .group-select, footer { display: none !important; }
+  main { padding: 18px 0; }
+  .workspace { grid-template-columns: 1fr; }
+  .course-panel { display: none; }
+  .calendar-panel, .evidence, .progress-card { box-shadow: none; break-inside: avoid; }
+  .calendar-scroll { overflow: visible; }
+  .calendar { min-width: 0; }
+}
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__eyebrow" data-i18n="eyebrow">TUM ELECTIVE PLANNER · LOCAL ONLY</div>
+    <div class="hero__top">
+      <div>
+        <h1 id="program-title">Next-semester plan</h1>
+        <p id="program-meta" class="hero__meta"></p>
+      </div>
+      <div class="hero__actions">
+        <button id="language-button" class="button button--ghost" type="button">中文</button>
+        <button id="import-button" class="button button--ghost" type="button" data-i18n="import">Import JSON</button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+        <button id="export-button" class="button button--ghost" type="button" data-i18n="export">Export JSON</button>
+        <button id="print-button" class="button button--light" type="button" data-i18n="print">Print</button>
+      </div>
+    </div>
+    <div class="term-strip">
+      <span class="term-strip__label" data-i18n="planning">Planning</span>
+      <strong id="target-term"></strong>
+      <span id="term-derivation"></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="notice-region" aria-live="polite"></section>
+
+    <section class="workspace" aria-label="Course planning workspace">
+      <aside class="course-panel">
+        <div class="section-heading section-heading--compact">
+          <div>
+            <p class="kicker" data-i18n="coursesKicker">NEXT-SEMESTER OFFERINGS</p>
+            <h2 data-i18n="coursesTitle">Choose courses</h2>
+          </div>
+          <span id="course-count" class="count-chip"></span>
+        </div>
+        <div class="filters">
+          <label class="search-field">
+            <span class="sr-only" data-i18n="searchLabel">Search courses</span>
+            <input id="search-input" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="Search title or module code">
+          </label>
+          <label>
+            <span class="sr-only" data-i18n="categoryLabel">Filter category</span>
+            <select id="category-filter"></select>
+          </label>
+        </div>
+        <div class="bulk-actions">
+          <button id="select-visible-button" class="small-button" type="button" data-i18n="selectVisible">Select visible</button>
+          <button id="clear-visible-button" class="small-button small-button--ghost" type="button" data-i18n="clearVisible">Deselect visible</button>
+        </div>
+        <div id="track-filters" class="track-filters"></div>
+        <div id="course-list" class="course-list"></div>
+      </aside>
+
+      <section class="calendar-panel" aria-labelledby="calendar-title">
+        <div class="section-heading section-heading--compact">
+          <div>
+            <p class="kicker" data-i18n="calendarKicker">WEEKLY VIEW</p>
+            <h2 id="calendar-title" data-i18n="calendarTitle">Your timetable</h2>
+          </div>
+          <span id="conflict-chip" class="conflict-chip"></span>
+        </div>
+        <div class="view-controls">
+          <label><span data-i18n="fontSize">Font size</span><input id="font-scale" type="range" min="80" max="140" value="100" step="5"><output id="font-scale-output">100%</output></label>
+          <label><span data-i18n="calendarWidth">Calendar width</span><input id="calendar-scale" type="range" min="50" max="200" value="70" step="5"><output id="calendar-scale-output">70%</output></label>
+        </div>
+        <div class="calendar-scroll"><div id="calendar" class="calendar"></div></div>
+        <div id="scheduled-summary" class="scheduled-summary"></div>
+        <div id="unscheduled" class="unscheduled"></div>
+      </section>
+    </section>
+
+    <section class="evidence" aria-labelledby="evidence-title">
+      <div class="section-heading section-heading--compact">
+        <div>
+          <p class="kicker" data-i18n="evidenceKicker">TRACEABILITY</p>
+          <h2 id="evidence-title" data-i18n="evidenceTitle">Sources and limitations</h2>
+        </div>
+      </div>
+      <div id="evidence-list" class="evidence-list"></div>
+      <p class="disclaimer" data-i18n="disclaimer">Personal, non-commercial planning support only. Information may be incomplete or incorrect; TUMonline is authoritative.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span data-i18n="localOnly">This file works offline and sends no data.</span>
+    <span id="generated-at"></span>
+  </footer>
+
+  <script id="planner-data" type="application/json">{"schema_version":"1.0","planning_term":{"current":{"code":"SS-2026","label":"Summer Semester 2026","term_id":null},"target":{"code":"WS-2026-27","label":"Winter Semester 2026/27","term_id":207},"method":"next_official_tum_semester","derived_from":"2026-08-16"},"program":{"name":"Management and Technology","degree":"Master of Science","curriculum_version_id":5386,"source":{"kind":"public_course","label":"TUMonline Courses — Management and Technology [20251], Master of Science","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses?curriculumVersionId=5386\u0026objTermId=207\u0026orgId=1","observed_at":"2026-08-16T19:00:00+08:00"}},"default_selected":true,"catalog_audit":{"visible_total":106,"collected_count":106,"page_size":100,"pages_read":2,"pagination_exhausted":true,"course_ids":["950943786","950942887","950940783","950944676","950976463","950976464","950942688","950942111","950944204","950942355","950940088","950942596","950942597","950941480","950941215","950941216","950940769","950942804","950942803","950940859","950942800","950942799","950940666","950940350","950940083","950946239","950945095","950941433","950944893","950942443","950941680","950943345","950943407","950940552","950943408","950942369","950942275","950942274","950943770","950945315","950944540","950942466","950944718","950942618","950952069","950944516","950940741","950940868","950940462","950940495","950944543","950940071","950940825","950942663","950942664","950941519","950943633","950941668","950941669","950940683","950940728","950942542","950944691","950944511","950944804","950945441","950941862","950941863","950942617","950944791","950941777","950940120","950940686","950941618","950944544","950943286","950941206","950977628","950943932","950941541","950942985","950940279","950942931","950945839","950941072","950940322","950940317","950941141","950940755","950943138","950943137","950940690","950943470","950974596","950942622","950943829","950941404","950941937","950941938","950944598","950946161","950944538","950945390","950941969","950941666","950940053"]},"categories":[{"id":"management","label":"Management","min_ects":null,"max_ects":null,"color":"#007C91","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"technology","label":"Technology","min_ects":null,"max_ects":null,"color":"#D97706","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"unresolved","label":"Track mapping pending","min_ects":null,"max_ects":null,"color":"#64748B","source":{"kind":"public_course","label":"TUMonline Courses — Management and Technology [20251], Master of Science","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses?curriculumVersionId=5386\u0026objTermId=207\u0026orgId=1","observed_at":"2026-08-16T19:00:00+08:00"}}],"tracks":[{"id":"management","label":"Management electives","group":"Management","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"informatics","label":"Informatics","group":"Technology option","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"chemistry","label":"Chemistry","group":"Technology option","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"electrical","label":"Electrical \u0026 Information Technology","group":"Technology option","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"mechanical","label":"Mechanical Engineering","group":"Technology option","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"computer-engineering","label":"Computer Engineering","group":"Technology option","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"industrial","label":"Industrial Engineering","group":"Technology option","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"sustainable-energies","label":"Sustainable Energies","group":"Technology option","source":{"kind":"public_degree_programme","label":"TUM School of Management — MMT management specializations and technology options","url":"https://www.mgt.tum.de/de/programs/graduate-programs/master-in-management-technology","observed_at":"2026-08-16T19:00:00+08:00"}}],"aggregate_requirements":[],"courses":[{"id":"950943786","module_code":null,"title":"Course 0000005567 (title truncated in TUMonline list)","ects":null,"category_id":"unresolved","track_ids":[],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950943786 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943786","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942887","module_code":null,"title":"Advanced Analytical Techniques (CH4115)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942887 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942887","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940783","module_code":null,"title":"Advanced Computer Architecture (IN2076)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940783 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940783","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944676","module_code":null,"title":"Advanced Concepts of Programming Languages (CIT3230000)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944676 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944676","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950976463","module_code":null,"title":"Advanced Environmental and Natural Resource Economics - Lecture (WZ2757, English)","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950976463 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950976463","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950976464","module_code":null,"title":"Advanced Environmental and Natural Resource Economics - Seminar (WZ2757, English)","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950976464 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950976464","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942688","module_code":null,"title":"Advanced Practical Course - Developing innovative services at the example of SAP technologies (IN2128, IN2106, IN212802)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942688 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942688","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942111","module_code":null,"title":"Advanced Seminar - Digital Transformation (IN2107, IN2396, IN4831)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942111 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942111","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944204","module_code":null,"title":"Advanced Seminar Economics \u0026 Policy (MGT001313, English): Productivity, Efficiency and Risk (Limited Places)","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944204 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944204","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942355","module_code":null,"title":"Advanced Topics of SW Engineering (IN2309, IN2126)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942355 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942355","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940088","module_code":null,"title":"Analytical Chemistry (CH0107)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940088 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940088","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942596","module_code":null,"title":"Applied Statistics and Econometrics (WZ1705, English)","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942596 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942596","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942597","module_code":null,"title":"Applied Statistics and Econometrics (WZ1705, English)","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942597 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942597","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941480","module_code":null,"title":"Automatic Control - Revision Course","ects":null,"category_id":"technology","track_ids":["electrical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-08-28","closes_at":null,"label":"Registration possible from 28.08.2026"},"source":{"kind":"public_course","label":"TUMonline course 950941480 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941480","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941215","module_code":null,"title":"Basic Principles: Operating Systems and System Software, Exercise Session (IN0009)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941215 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941215","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941216","module_code":null,"title":"Basic Principles: Operating Systems and System Software, Exercise Session (IN0009)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941216 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941216","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940769","module_code":null,"title":"Basic Principles: Operating Systems and System Software (IN0009)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-07","closes_at":null,"label":"Registration possible from 07.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950940769 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940769","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942804","module_code":null,"title":"Basics of Electrical Energy Storage","ects":null,"category_id":"technology","track_ids":["electrical","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-01","closes_at":null,"label":"Registration possible from 01.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950942804 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942804","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942803","module_code":null,"title":"Basics of Electrical Energy Storage","ects":null,"category_id":"technology","track_ids":["electrical","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-01","closes_at":null,"label":"Registration possible from 01.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950942803 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942803","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940859","module_code":null,"title":"Basics of Physical Chemistry 1, Exercise (CH1091/CH7201)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940859 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940859","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942800","module_code":null,"title":"Batteriespeicher","ects":null,"category_id":"technology","track_ids":["sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-01","closes_at":null,"label":"Registration possible from 01.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950942800 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942800","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942799","module_code":null,"title":"Batteriespeicher","ects":null,"category_id":"technology","track_ids":["sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-01","closes_at":null,"label":"Registration possible from 01.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950942799 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942799","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940666","module_code":null,"title":"Biochemistry, Exercises (CH4117)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940666 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940666","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940350","module_code":null,"title":"Biological Chemistry and Biochemistry (CH4117)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940350 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940350","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940083","module_code":null,"title":"Biology for Chemists (CH0106)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940083 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940083","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950946239","module_code":null,"title":"Bioprocess Engineering","ects":null,"category_id":"technology","track_ids":["industrial"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950946239 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950946239","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950945095","module_code":null,"title":"Central Exercise: Advanced Topics of Software Engineering (IN2309, IN2126)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950945095 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945095","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941433","module_code":null,"title":"Clinical Applications of Computational Medicine","ects":null,"category_id":"unresolved","track_ids":[],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"open","opens_at":null,"closes_at":null,"label":"Course open for registration"},"source":{"kind":"public_course","label":"TUMonline course 950941433 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941433","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944893","module_code":null,"title":"Cloud Information Systems (CIT3230002)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944893 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944893","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942443","module_code":null,"title":"Communication Acoustics","ects":null,"category_id":"technology","track_ids":["electrical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942443 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942443","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941680","module_code":null,"title":"Communication Networks","ects":null,"category_id":"technology","track_ids":["electrical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-09","closes_at":null,"label":"Registration possible from 09.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950941680 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941680","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943345","module_code":null,"title":"Construction Chemicals and Materials 1 - Inorganic Binders (CH3151a)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950943345 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943345","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943407","module_code":null,"title":"Construction Chemicals and Materials 1 - Inorganic Binders (CH3151b)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration for this course"},"source":{"kind":"public_course","label":"TUMonline course 950943407 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943407","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940552","module_code":null,"title":"Construction Chemicals 1","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940552 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940552","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943408","module_code":null,"title":"Construction Chemistry 1 (CH3153b)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration for this course"},"source":{"kind":"public_course","label":"TUMonline course 950943408 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943408","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942369","module_code":null,"title":"Data Analysis and Visualization in R (IN2339)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942369 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942369","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942275","module_code":null,"title":"Data Driven Innovation","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942275 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942275","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942274","module_code":null,"title":"Data Driven Innovations","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942274 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942274","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943770","module_code":null,"title":"Data Networking","ects":null,"category_id":"technology","track_ids":["electrical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-09","closes_at":null,"label":"Registration possible from 09.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950943770 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943770","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950945315","module_code":null,"title":"Development of Wind Energy Projects","ects":null,"category_id":"technology","track_ids":["industrial","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950945315 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945315","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944540","module_code":null,"title":"Development of Wind Energy Projects","ects":null,"category_id":"technology","track_ids":["industrial","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944540 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944540","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942466","module_code":null,"title":"Econometric Impact Analysis (WZ1564, English)","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942466 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942466","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944718","module_code":null,"title":"Exercise - Advanced Concepts of Programming Languages (CIT3230000)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944718 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944718","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942618","module_code":null,"title":"Exercise Course to Materials Sciences (MS\u0026E)","ects":null,"category_id":"technology","track_ids":["mechanical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942618 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942618","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950952069","module_code":null,"title":"Extended Reality for Value Creation for Businesses (MGT001523, English) (Limited places)","ects":null,"category_id":"management","track_ids":["management","industrial"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"unknown","opens_at":null,"closes_at":null,"label":null},"source":{"kind":"public_course","label":"TUMonline course 950952069 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950952069","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944516","module_code":null,"title":"Fundamentals of Artificial Intelligence (IN2406)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944516 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944516","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940741","module_code":null,"title":"Fundamentals of Databases (IN0008)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940741 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940741","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940868","module_code":null,"title":"Fundamentals of Physical Chemistry 1 (CH1091/CH7201)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940868 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940868","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940462","module_code":null,"title":"General and Inorganic Chemistry (CH6202a)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940462 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940462","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940495","module_code":null,"title":"General and Inorganic Chemistry, Exercises (CH6202b)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940495 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940495","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944543","module_code":null,"title":"Hydrogen Mobility","ects":null,"category_id":"technology","track_ids":["sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944543 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944543","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940071","module_code":null,"title":"Industrial Chemical Processes 1 - Catalysis for Energy (CH3094)","ects":null,"category_id":"technology","track_ids":["chemistry","industrial","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940071 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940071","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940825","module_code":null,"title":"Industrial Energy Economy","ects":null,"category_id":"management","track_ids":["management","industrial","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-01","closes_at":null,"label":"Registration possible from 01.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950940825 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940825","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942663","module_code":null,"title":"Inorganic Solid State and Organometallic Chemistry (CH4107)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942663 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942663","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942664","module_code":null,"title":"Inorganic Solid State and Organometallic Chemistry (CH4107)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942664 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942664","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941519","module_code":null,"title":"Inside my iPhone - Technology analysis of a smart phone","ects":null,"category_id":"unresolved","track_ids":[],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-23","closes_at":null,"label":"Registration possible from 23.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950941519 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941519","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943633","module_code":null,"title":"Interdisciplinary Project X","ects":null,"category_id":"technology","track_ids":["industrial"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950943633 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943633","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941668","module_code":null,"title":"Introduction in Flight System Dynamics and Flight Control","ects":null,"category_id":"technology","track_ids":["electrical","mechanical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-08-17","closes_at":null,"label":"Registration possible from 17.08.2026"},"source":{"kind":"public_course","label":"TUMonline course 950941668 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941668","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941669","module_code":null,"title":"Introduction in Flight System Dynamics and Flight Control","ects":null,"category_id":"technology","track_ids":["electrical","mechanical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-08-17","closes_at":null,"label":"Registration possible from 17.08.2026"},"source":{"kind":"public_course","label":"TUMonline course 950941669 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941669","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940683","module_code":null,"title":"Introduction into Computer Science (for non Informatics studies, TUM BWL) (IN8005)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940683 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940683","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940728","module_code":null,"title":"Introduction to Computer Architecture (IN0004)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940728 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940728","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942542","module_code":null,"title":"Introduction to Deep Learning (IN2346)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"open","opens_at":null,"closes_at":null,"label":"Course open for registration"},"source":{"kind":"public_course","label":"TUMonline course 950942542 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942542","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944691","module_code":null,"title":"Introduction to Programming (CIT5230000)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944691 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944691","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944511","module_code":null,"title":"IT Sicherheit (IN0042)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"open","opens_at":null,"closes_at":null,"label":"Course open for registration"},"source":{"kind":"public_course","label":"TUMonline course 950944511 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944511","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944804","module_code":null,"title":"Lab Energy Informatics","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering","electrical","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-01","closes_at":null,"label":"Registration possible from 01.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950944804 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944804","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950945441","module_code":null,"title":"Machine Learning in Energy Management","ects":null,"category_id":"management","track_ids":["management","informatics","computer-engineering","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-01","closes_at":null,"label":"Registration possible from 01.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950945441 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945441","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941862","module_code":null,"title":"Materials and Process Technologies for Carbon Composites","ects":null,"category_id":"technology","track_ids":["mechanical","industrial"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941862 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941862","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941863","module_code":null,"title":"Materials and Process Technologies for Carbon Composites","ects":null,"category_id":"technology","track_ids":["mechanical","industrial"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941863 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941863","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942617","module_code":null,"title":"Materials Sciences (MS\u0026E)","ects":null,"category_id":"technology","track_ids":["mechanical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942617 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942617","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944791","module_code":null,"title":"Molecular Medicine (CH0226)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944791 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944791","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941777","module_code":null,"title":"Nanosystems","ects":null,"category_id":"unresolved","track_ids":[],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"open","opens_at":null,"closes_at":null,"label":"Course open for registration"},"source":{"kind":"public_course","label":"TUMonline course 950941777 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941777","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940120","module_code":null,"title":"Network Planning","ects":null,"category_id":"technology","track_ids":["electrical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-09","closes_at":null,"label":"Registration possible from 09.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950940120 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940120","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940686","module_code":null,"title":"Network Security (IN2101)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering","electrical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940686 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940686","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941618","module_code":null,"title":"Pharmaceutical Radiochemistry 1 (CH3301)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941618 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941618","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944544","module_code":null,"title":"Piston Engines 1","ects":null,"category_id":"technology","track_ids":["mechanical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944544 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944544","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943286","module_code":null,"title":"(POL60102) Science Communication and Public Engagement","ects":null,"category_id":"management","track_ids":["management","electrical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950943286 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943286","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941206","module_code":null,"title":"(POL70044) Business Ethics","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941206 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941206","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950977628","module_code":null,"title":"(POL700450) Master Seminar Business Ethics","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950977628 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950977628","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943932","module_code":null,"title":"(POL7004511) Master Seminar Business Ethics","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950943932 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943932","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941541","module_code":null,"title":"Practical Course - Designing IT-based Learning (IN0012, IN4138)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941541 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941541","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942985","module_code":null,"title":"Practical Course - Internet Lab - IlabX (IN0012, IN2106, IN4240)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"unknown","opens_at":null,"closes_at":null,"label":null},"source":{"kind":"public_course","label":"TUMonline course 950942985 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942985","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940279","module_code":null,"title":"Practical Course - iPraktikum, iOS Praktikum (IN0012, IN2106, IN2175, IN2128, IN4049)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940279 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940279","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942931","module_code":null,"title":"Praktikum - Interactive Learning (IN0012, IN2106, IN2175, IN4234)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950942931 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942931","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950945839","module_code":null,"title":"Project Course Health Economics","ects":null,"category_id":"management","track_ids":["management","industrial"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"open","opens_at":null,"closes_at":null,"label":"Course open for registration"},"source":{"kind":"public_course","label":"TUMonline course 950945839 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945839","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941072","module_code":null,"title":"Project: Economic aspects of Nanotechnology","ects":null,"category_id":"management","track_ids":["management","industrial"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"open","opens_at":null,"closes_at":null,"label":"Course open for registration"},"source":{"kind":"public_course","label":"TUMonline course 950941072 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941072","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940322","module_code":null,"title":"Reactivity of Organic Compounds (CH0115)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940322 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940322","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940317","module_code":null,"title":"Reactivity of Organic Compounds, Exercises (CH0115)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940317 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940317","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941141","module_code":null,"title":"Real-Time Systems, Exercise Session (IN2060)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941141 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941141","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940755","module_code":null,"title":"Real-Time Systems (IN2060)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940755 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940755","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943138","module_code":null,"title":"Risk Theory and Modeling - Exercises (WZ0043, English)","ects":null,"category_id":"unresolved","track_ids":[],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950943138 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943138","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943137","module_code":null,"title":"Risk Theory and Modeling - Lecture (WZ0043, English)","ects":null,"category_id":"unresolved","track_ids":[],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950943137 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943137","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940690","module_code":null,"title":"Robotics (IN2067)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940690 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940690","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943470","module_code":null,"title":"Scientific Seminar on Energy Economy and Application Technology","ects":null,"category_id":"management","track_ids":["management","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-09-01","closes_at":null,"label":"Registration possible from 01.09.2026"},"source":{"kind":"public_course","label":"TUMonline course 950943470 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943470","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950974596","module_code":null,"title":"Seminar - Behavioral Insights in the Age of Big Data (IN0014, IN2107, IN2396, IN4424)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"unknown","opens_at":null,"closes_at":null,"label":null},"source":{"kind":"public_course","label":"TUMonline course 950974596 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950974596","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950942622","module_code":null,"title":"Seminar - Security and Privacy Economics (IN0014, IN2107, IN2396, IN4892)","ects":null,"category_id":"management","track_ids":["management","informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"unknown","opens_at":null,"closes_at":null,"label":null},"source":{"kind":"public_course","label":"TUMonline course 950942622 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950942622","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950943829","module_code":null,"title":"Seminar Health Care Management","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"open","opens_at":null,"closes_at":null,"label":"Course open for registration"},"source":{"kind":"public_course","label":"TUMonline course 950943829 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950943829","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941404","module_code":null,"title":"Software Engineering in Industrial Practice (IN2235)","ects":null,"category_id":"technology","track_ids":["informatics","computer-engineering","industrial"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-08-30","closes_at":null,"label":"Registration possible from 30.08.2026"},"source":{"kind":"public_course","label":"TUMonline course 950941404 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941404","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941937","module_code":null,"title":"Sponsorship-linked marketing (online-course)","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"open","opens_at":null,"closes_at":null,"label":"Course open for registration"},"source":{"kind":"public_course","label":"TUMonline course 950941937 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941937","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941938","module_code":null,"title":"Sponsorship-linked marketing (online-Kurs)","ects":null,"category_id":"management","track_ids":["management"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"open","opens_at":null,"closes_at":null,"label":"Course open for registration"},"source":{"kind":"public_course","label":"TUMonline course 950941938 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941938","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944598","module_code":null,"title":"Strategic IT Management (CIT4230000)","ects":null,"category_id":"management","track_ids":["management","informatics","computer-engineering"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"upcoming","opens_at":"2026-08-30","closes_at":null,"label":"Registration possible from 30.08.2026"},"source":{"kind":"public_course","label":"TUMonline course 950944598 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944598","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950946161","module_code":null,"title":"Sustainability in Automotive Engineering","ects":null,"category_id":"technology","track_ids":["mechanical"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950946161 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950946161","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950944538","module_code":null,"title":"Sustainable Mobile Drivetrains","ects":null,"category_id":"technology","track_ids":["mechanical","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950944538 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950944538","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950945390","module_code":null,"title":"Sustainable production engineering and product development","ects":null,"category_id":"technology","track_ids":["mechanical","industrial","sustainable-energies"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":"950945390-published","session_groups":[{"id":"950945390-published","label":"Published dates","meetings":[{"day":2,"start":"10:00","end":"12:00","type":"course meeting","location":null,"weeks":"2026-10-13 to 2027-02-02"},{"day":4,"start":"12:00","end":"13:00","type":"course meeting","location":null,"weeks":"2026-10-15 to 2027-02-04"}]}],"schedule_status":"published","registration":{"status":"upcoming","opens_at":"2026-08-30","closes_at":null,"label":"Registration possible from 30.08.2026"},"source":{"kind":"public_course","label":"TUMonline course 950945390 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950945390","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941969","module_code":null,"title":"Think.Make.Start.","ects":null,"category_id":"unresolved","track_ids":[],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941969 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941969","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950941666","module_code":null,"title":"Uncertainty Modeling in Engineering (Vorlesung + Übung)","ects":null,"category_id":"unresolved","track_ids":[],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950941666 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950941666","observed_at":"2026-08-16T19:00:00+08:00"}},{"id":"950940053","module_code":null,"title":"Water Chemistry I (CH1062)","ects":null,"category_id":"technology","track_ids":["chemistry"],"term":"WS-2026-27","term_id":207,"status":"candidate","selected_group_id":null,"session_groups":[],"schedule_status":"unverified","registration":{"status":"none","opens_at":null,"closes_at":null,"label":"No registration procedures for this course"},"source":{"kind":"public_course","label":"TUMonline course 950940053 — target-term list row","url":"https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/950940053","observed_at":"2026-08-16T19:00:00+08:00"}}],"offerings_status":"partial","offerings_message":"Course index complete (106/106). One Dates and Groups detail was verified; remaining course details are explicitly marked unverified, not unpublished. Track buttons demonstrate the interaction, but per-course assignments inferred from titles/module codes must be replaced with Degree Program curriculum-tree evidence before publication.","conflicts":[],"generated_at":"2026-08-16T19:00:00+08:00"}</script>
+  <script>(() => {
+  "use strict";
+
+  const PALETTE = ["#007C91", "#D97706", "#7C3AED", "#15803D", "#C2416C", "#2563EB", "#A13D2D", "#52796F"];
+  const DAY_START_MINUTES = 8 * 60;
+  const PIXELS_PER_MINUTE = 0.9;
+  const SENSITIVE_KEY = /password|passwd|credential|secret|token|cookie|session.?id|otp|mfa|student.?id|matriculation|matrikel|email|grade|exam.?result|first.?name|last.?name|full.?name|account.?id|raw.?(html|dom|page)/i;
+  const TEXT = {
+    en: {
+      eyebrow: "TUM ELECTIVE PLANNER · LOCAL ONLY", import: "Import JSON", export: "Export JSON", print: "Print",
+      planning: "Planning", requirementsKicker: "CURRICULUM REQUIREMENTS", progressTitle: "Credit progress",
+      coursesKicker: "NEXT-SEMESTER OFFERINGS", coursesTitle: "Choose courses", searchLabel: "Search courses",
+      searchPlaceholder: "Search title or module code", categoryLabel: "Filter category", calendarKicker: "WEEKLY VIEW",
+      calendarTitle: "Your timetable", evidenceKicker: "TRACEABILITY", evidenceTitle: "Sources and limitations",
+      disclaimer: "Personal, non-commercial planning support only. Information may be incomplete or incorrect; TUMonline is authoritative.", localOnly: "This file works offline and sends no data.",
+      allCategories: "All categories", unclassified: "Unclassified", add: "Add", remove: "Remove", enrolled: "Enrolled",
+      planned: "planned", courses: "courses", creditsPlanned: "ECTS planned", minimum: "minimum", maximum: "maximum",
+      noRequirement: "No numeric requirement", remaining: "remaining", complete: "requirement met", noCourses: "No matching courses.",
+      unavailable: "Next-semester offerings have not been published. No current-semester courses were substituted.",
+      partial: "Only part of the next-semester catalogue is currently available.", conflicts: "conflicts", noConflicts: "No conflicts",
+      timeTba: "Time to be announced", noTime: "Selected courses without a published time", chooseGroup: "Choose section",
+      generated: "Generated", fromCurrent: "from current", overridden: "User-selected target term", importError: "Could not import this file",
+      imported: "Imported locally. Nothing was uploaded.", sourceConflict: "Source conflict", observed: "Observed",
+      source: "Source", ectsUnknown: "ECTS unknown", category: "Category", selected: "Selected", statusCandidate: "Candidate",
+      selectVisible: "Select visible", clearVisible: "Deselect visible", tracks: "Tracks", allTracks: "All tracks",
+      fontSize: "Font size", calendarWidth: "Calendar width", scheduleUnverified: "Schedule not checked",
+      registrationOpen: "Registration open", registrationUpcoming: "Registration upcoming", registrationNone: "No registration procedure",
+      registrationUnknown: "Registration status unknown", noTimePublished: "Published without a meeting time", detailPending: "Detail verification pending", scheduledCourses: "Scheduled courses"
+    },
+    zh: {
+      eyebrow: "TUM 选课规划 · 仅本地运行", import: "导入 JSON", export: "导出 JSON", print: "打印",
+      planning: "正在规划", requirementsKicker: "培养方案要求", progressTitle: "分类学分进度",
+      coursesKicker: "下一学期课程", coursesTitle: "选择课程", searchLabel: "搜索课程",
+      searchPlaceholder: "搜索课程名或模块编号", categoryLabel: "按大类筛选", calendarKicker: "周视图",
+      calendarTitle: "你的课表", evidenceKicker: "可追溯性", evidenceTitle: "来源与限制",
+      disclaimer: "仅限个人、非商业选课规划使用。信息可能不完整或有误，一切以 TUMonline 为准。", localOnly: "此文件可离线使用，不会发送数据。",
+      allCategories: "全部大类", unclassified: "待分类", add: "加入", remove: "移除", enrolled: "已报名",
+      planned: "已规划", courses: "门课程", creditsPlanned: "已规划 ECTS", minimum: "最低", maximum: "最高",
+      noRequirement: "没有数值学分要求", remaining: "仍需", complete: "已满足要求", noCourses: "没有符合筛选条件的课程。",
+      unavailable: "下一学期课程尚未发布；没有使用当前学期课程替代。", partial: "下一学期课程目前只发布了一部分。",
+      conflicts: "处冲突", noConflicts: "无冲突", timeTba: "时间待公布", noTime: "以下已选课程尚未公布时间",
+      chooseGroup: "选择教学班", generated: "生成时间", fromCurrent: "基于当前学期", overridden: "用户指定目标学期",
+      importError: "无法导入此文件", imported: "已在本地导入，没有上传任何数据。", sourceConflict: "来源冲突",
+      observed: "读取时间", source: "来源", ectsUnknown: "ECTS 未知", category: "大类", selected: "已选择", statusCandidate: "候选"
+      , selectVisible: "选择当前筛选结果", clearVisible: "反选当前筛选结果", tracks: "方向筛选", allTracks: "全部方向",
+      fontSize: "字体大小", calendarWidth: "周历宽度", scheduleUnverified: "课程详情待核验",
+      registrationOpen: "报名已开放", registrationUpcoming: "报名即将开放", registrationNone: "无报名流程",
+      registrationUnknown: "报名状态未知", noTimePublished: "已确认无固定时间", detailPending: "详情时间待核验", scheduledCourses: "已有时间的课程"
+    }
+  };
+
+  let language = "en";
+  let state = parseInitialData();
+  let activeTrackIds = new Set();
+  let transientNotice = null;
+
+  function parseInitialData() {
+    const parsed = JSON.parse(document.getElementById("planner-data").textContent);
+    const cloned = typeof structuredClone === "function" ? structuredClone(parsed) : JSON.parse(JSON.stringify(parsed));
+    if (cloned.default_selected !== false) {
+      cloned.courses.forEach(course => {
+        if (course.status === "candidate") course.status = "planned";
+        if (course.status === "planned" && !course.selected_group_id && course.session_groups?.length) course.selected_group_id = course.session_groups[0].id;
+      });
+    }
+    return cloned;
+  }
+
+  function t(key) { return TEXT[language][key] || key; }
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined && text !== null) node.textContent = String(text);
+    return node;
+  }
+  function minutes(value) {
+    const [hours, mins] = value.split(":").map(Number);
+    return hours * 60 + mins;
+  }
+  function selectedCourses() { return state.courses.filter(course => course.status === "planned" || course.status === "enrolled"); }
+  function categoryById(id) { return state.categories.find(category => category.id === id); }
+  function colorFor(categoryId) {
+    if (!categoryId) return "#7C8581";
+    const index = state.categories.findIndex(category => category.id === categoryId);
+    const category = state.categories[index];
+    return category?.color || PALETTE[(index < 0 ? 0 : index) % PALETTE.length];
+  }
+  function selectedGroup(course) {
+    if (!course.session_groups?.length) return null;
+    return course.session_groups.find(group => group.id === course.selected_group_id) || course.session_groups[0];
+  }
+  function formatEcts(value) { return value === null || value === undefined ? t("ectsUnknown") : `${value} ECTS`; }
+  function formatObserved(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.valueOf()) ? value : date.toLocaleString(language === "zh" ? "zh-CN" : "en-GB");
+  }
+
+  function render() {
+    document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+    document.querySelectorAll("[data-i18n]").forEach(node => { node.textContent = t(node.dataset.i18n); });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(node => { node.placeholder = t(node.dataset.i18nPlaceholder); });
+    document.getElementById("language-button").textContent = language === "en" ? "中文" : "English";
+    renderHeader();
+    renderNotices();
+    renderCategoryFilter();
+    renderTrackFilters();
+    renderCourses();
+    renderCalendar();
+    renderEvidence();
+  }
+
+  function renderHeader() {
+    document.getElementById("program-title").textContent = state.program.name;
+    const degree = state.program.degree ? ` · ${state.program.degree}` : "";
+    const version = state.program.curriculum_version_id ? ` · Curriculum ${state.program.curriculum_version_id}` : "";
+    document.getElementById("program-meta").textContent = `${degree}${version}`.replace(/^ · /, "");
+    document.getElementById("target-term").textContent = state.planning_term.target.label;
+    const current = state.planning_term.current?.label || state.planning_term.current?.code || "—";
+    document.getElementById("term-derivation").textContent = state.planning_term.method === "user_override" ? t("overridden") : `${t("fromCurrent")} ${current}`;
+    document.getElementById("generated-at").textContent = `${t("generated")}: ${formatObserved(state.generated_at)}`;
+  }
+
+  function renderNotices() {
+    const region = document.getElementById("notice-region");
+    region.replaceChildren();
+    if (state.offerings_status === "unavailable") region.append(el("div", "notice notice--danger", state.offerings_message || t("unavailable")));
+    if (state.offerings_status === "partial") region.append(el("div", "notice", state.offerings_message || t("partial")));
+    (state.conflicts || []).forEach(conflict => region.append(el("div", "notice", `${t("sourceConflict")}: ${conflict.message}`)));
+    if (transientNotice) region.append(el("div", transientNotice.error ? "notice notice--danger" : "notice", transientNotice.message));
+  }
+
+  function renderProgress() {
+    const selected = selectedCourses();
+    const total = selected.reduce((sum, course) => sum + (Number(course.ects) || 0), 0);
+    document.getElementById("total-ects").textContent = `${total} ${t("creditsPlanned")}`;
+    const grid = document.getElementById("progress-grid");
+    grid.replaceChildren();
+    state.categories.forEach(category => {
+      const amount = selected.filter(course => course.category_id === category.id).reduce((sum, course) => sum + (Number(course.ects) || 0), 0);
+      const target = category.min_ects;
+      const progress = target ? Math.min(100, amount / target * 100) : (amount > 0 ? 100 : 0);
+      const card = el("article", "progress-card");
+      card.style.setProperty("--category-color", colorFor(category.id));
+      const top = el("div", "progress-card__top");
+      const text = el("div");
+      text.append(el("h3", "", category.label));
+      let rule = t("noRequirement");
+      if (category.min_ects !== null && category.min_ects !== undefined) rule = `${t("minimum")} ${category.min_ects} ECTS`;
+      if (category.max_ects !== null && category.max_ects !== undefined) rule += ` · ${t("maximum")} ${category.max_ects}`;
+      text.append(el("div", "progress-card__rule", rule));
+      top.append(text, el("div", "progress-card__number", `${amount}`));
+      const track = el("div", "progress-track");
+      const fill = el("span");
+      fill.style.width = `${progress}%`;
+      track.append(fill);
+      const status = target ? (amount >= target ? t("complete") : `${target - amount} ECTS ${t("remaining")}`) : formatEcts(amount);
+      card.append(top, track, el("div", "progress-card__rule", status));
+      grid.append(card);
+    });
+
+    (state.aggregate_requirements || []).forEach(requirement => {
+      const included = new Set(requirement.category_ids);
+      const amount = selected.filter(course => included.has(course.category_id)).reduce((sum, course) => sum + (Number(course.ects) || 0), 0);
+      const target = requirement.min_ects;
+      const progress = target ? Math.min(100, amount / target * 100) : (amount > 0 ? 100 : 0);
+      const card = el("article", "progress-card progress-card--aggregate");
+      card.style.setProperty("--category-color", "#334155");
+      const top = el("div", "progress-card__top");
+      const text = el("div");
+      text.append(el("h3", "", requirement.label));
+      let rule = t("noRequirement");
+      if (requirement.min_ects !== null && requirement.min_ects !== undefined) rule = `${t("minimum")} ${requirement.min_ects} ECTS`;
+      if (requirement.max_ects !== null && requirement.max_ects !== undefined) rule += ` · ${t("maximum")} ${requirement.max_ects}`;
+      text.append(el("div", "progress-card__rule", rule));
+      top.append(text, el("div", "progress-card__number", `${amount}`));
+      const track = el("div", "progress-track");
+      const fill = el("span");
+      fill.style.width = `${progress}%`;
+      track.append(fill);
+      const status = target ? (amount >= target ? t("complete") : `${target - amount} ECTS ${t("remaining")}`) : formatEcts(amount);
+      card.append(top, track, el("div", "progress-card__rule", status));
+      grid.append(card);
+    });
+
+    const unclassified = selected.filter(course => !course.category_id);
+    if (unclassified.length) {
+      const card = el("article", "progress-card");
+      card.style.setProperty("--category-color", colorFor(null));
+      const top = el("div", "progress-card__top");
+      const label = el("div");
+      label.append(el("h3", "", t("unclassified")), el("div", "progress-card__rule", `${unclassified.length} ${t("courses")}`));
+      const ects = unclassified.reduce((sum, course) => sum + (Number(course.ects) || 0), 0);
+      top.append(label, el("div", "progress-card__number", ects));
+      card.append(top);
+      grid.append(card);
+    }
+  }
+
+  function renderCategoryFilter() {
+    const select = document.getElementById("category-filter");
+    const previous = select.value;
+    select.replaceChildren();
+    select.append(new Option(t("allCategories"), ""));
+    state.categories.forEach(category => select.append(new Option(category.label, category.id)));
+    select.append(new Option(t("unclassified"), "__unclassified"));
+    if ([...select.options].some(option => option.value === previous)) select.value = previous;
+  }
+
+  function tracks() { return Array.isArray(state.tracks) ? state.tracks : []; }
+  function trackById(id) { return tracks().find(track => track.id === id); }
+  function renderTrackFilters() {
+    const region = document.getElementById("track-filters");
+    region.replaceChildren();
+    if (!tracks().length) return;
+    const groups = new Map();
+    tracks().forEach(track => {
+      const group = track.group || t("tracks");
+      if (!groups.has(group)) groups.set(group, []);
+      groups.get(group).push(track);
+    });
+    groups.forEach((items, groupName) => {
+      const group = el("div", "track-group");
+      group.append(el("div", "track-group__label", groupName));
+      items.forEach(track => {
+        const button = el("button", `track-chip${activeTrackIds.has(track.id) ? " is-active" : ""}`, track.label);
+        button.type = "button";
+        button.addEventListener("click", () => {
+          if (activeTrackIds.has(track.id)) activeTrackIds.delete(track.id); else activeTrackIds.add(track.id);
+          renderTrackFilters(); renderCourses();
+        });
+        group.append(button);
+      });
+      region.append(group);
+    });
+  }
+
+  function filteredCourses() {
+    const search = document.getElementById("search-input").value.trim().toLocaleLowerCase();
+    const filter = document.getElementById("category-filter").value;
+    return state.courses.filter(course => {
+      const text = `${course.title} ${course.module_code || ""}`.toLocaleLowerCase();
+      const matchesText = !search || text.includes(search);
+      const matchesCategory = !filter || (filter === "__unclassified" ? !course.category_id : course.category_id === filter);
+      const courseTracks = new Set(course.track_ids || []);
+      const matchesTrack = !activeTrackIds.size || [...activeTrackIds].some(id => courseTracks.has(id));
+      return matchesText && matchesCategory && matchesTrack;
+    });
+  }
+
+  function renderCourses() {
+    const courses = filteredCourses();
+    document.getElementById("course-count").textContent = `${courses.length} ${t("courses")}`;
+    const list = document.getElementById("course-list");
+    list.replaceChildren();
+    if (!courses.length) { list.append(el("div", "empty-state", t("noCourses"))); return; }
+    courses.forEach(course => list.append(courseCard(course)));
+  }
+
+  function courseCard(course) {
+    const selected = course.status === "planned" || course.status === "enrolled";
+    const card = el("article", `course-card${selected ? " is-selected" : ""}`);
+    card.style.setProperty("--category-color", colorFor(course.category_id));
+    const header = el("div", "course-card__header");
+    const info = el("div");
+    info.append(el("div", "course-card__code", course.module_code || course.id), el("h3", "", course.title));
+    const meta = el("div", "course-card__meta");
+    meta.append(el("span", "tag", formatEcts(course.ects)));
+    const category = categoryById(course.category_id);
+    meta.append(el("span", category ? "tag" : "tag tag--unclassified", category?.label || t("unclassified")));
+    (course.track_ids || []).map(trackById).filter(Boolean).forEach(track => meta.append(el("span", "tag", track.label)));
+    const registration = registrationLabel(course);
+    meta.append(el("span", `tag tag--registration is-${course.registration?.status || "unknown"}`, registration));
+    info.append(meta);
+    const button = el("button", `status-button${selected ? " is-selected" : ""}`);
+    button.type = "button";
+    if (course.status === "enrolled") {
+      button.textContent = t("enrolled");
+      button.disabled = true;
+    } else {
+      button.textContent = selected ? t("remove") : t("add");
+      button.addEventListener("click", () => {
+        course.status = selected ? "candidate" : "planned";
+        if (course.status === "planned" && !course.selected_group_id && course.session_groups?.length) course.selected_group_id = course.session_groups[0].id;
+        render();
+      });
+    }
+    header.append(info, button);
+    card.append(header);
+    if (course.session_groups?.length > 1) {
+      const select = el("select", "group-select");
+      select.setAttribute("aria-label", `${t("chooseGroup")}: ${course.title}`);
+      course.session_groups.forEach(group => select.append(new Option(`${t("chooseGroup")}: ${group.label}`, group.id)));
+      select.value = selectedGroup(course)?.id || course.session_groups[0].id;
+      select.addEventListener("change", () => { course.selected_group_id = select.value; renderCalendar(); });
+      card.append(select);
+    }
+    return card;
+  }
+
+  function registrationLabel(course) {
+    const registration = course.registration || {};
+    if (registration.label) return registration.label;
+    if (registration.status === "open") return t("registrationOpen");
+    if (registration.status === "upcoming") return registration.opens_at ? `${t("registrationUpcoming")}: ${registration.opens_at}` : t("registrationUpcoming");
+    if (registration.status === "none") return t("registrationNone");
+    return t("registrationUnknown");
+  }
+
+  function meetingRecords() {
+    const records = [];
+    selectedCourses().forEach(course => {
+      const group = selectedGroup(course);
+      (group?.meetings || []).forEach((meeting, index) => records.push({course, group, meeting, key: `${course.id}:${group.id}:${index}`}));
+    });
+    return records;
+  }
+
+  function conflictKeys(records) {
+    const keys = new Set();
+    for (let i = 0; i < records.length; i += 1) {
+      for (let j = i + 1; j < records.length; j += 1) {
+        const a = records[i], b = records[j];
+        if (a.course.id === b.course.id || a.meeting.day !== b.meeting.day) continue;
+        if (minutes(a.meeting.start) < minutes(b.meeting.end) && minutes(b.meeting.start) < minutes(a.meeting.end)) {
+          keys.add(a.key); keys.add(b.key);
+        }
+      }
+    }
+    return keys;
+  }
+
+  function renderCalendar() {
+    const records = meetingRecords();
+    const conflicts = conflictKeys(records);
+    const conflictCount = [...conflicts].length;
+    const chip = document.getElementById("conflict-chip");
+    chip.textContent = conflictCount ? `${conflictCount} ${t("conflicts")}` : t("noConflicts");
+    chip.classList.toggle("has-conflict", Boolean(conflictCount));
+
+    const dayNames = language === "zh" ? ["周一", "周二", "周三", "周四", "周五", "周六", "周日"] : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const calendar = document.getElementById("calendar");
+    calendar.replaceChildren();
+    for (let day = 1; day <= 7; day += 1) {
+      const column = el("div", "day-column");
+      column.append(el("div", "day-title", dayNames[day - 1]));
+      records.filter(record => record.meeting.day === day).forEach(record => {
+        const event = el("div", `event${conflicts.has(record.key) ? " is-conflict" : ""}`);
+        event.style.setProperty("--category-color", colorFor(record.course.category_id));
+        event.style.top = `${40 + Math.max(0, minutes(record.meeting.start) - DAY_START_MINUTES) * PIXELS_PER_MINUTE}px`;
+        event.style.minHeight = `${Math.max(92, (minutes(record.meeting.end) - minutes(record.meeting.start)) * PIXELS_PER_MINUTE)}px`;
+        event.title = `${record.course.title}\n${record.meeting.start}–${record.meeting.end}\n${record.meeting.location || ""}`;
+        event.append(el("strong", "", record.course.title), el("span", "", `${record.meeting.start}–${record.meeting.end}`));
+        if (record.meeting.location) event.append(el("span", "", ` · ${record.meeting.location}`));
+        event.append(el("small", "event__registration", registrationLabel(record.course)));
+        column.append(event);
+      });
+      calendar.append(column);
+    }
+    const scheduledSummary = document.getElementById("scheduled-summary");
+    scheduledSummary.replaceChildren();
+    const scheduledCourses = selectedCourses().filter(course => (selectedGroup(course)?.meetings || []).length);
+    if (scheduledCourses.length) {
+      scheduledSummary.append(el("h3", "", t("scheduledCourses")));
+      const summaryList = el("div", "scheduled-summary-list");
+      scheduledCourses.forEach(course => {
+        const group = selectedGroup(course);
+        const meetings = group.meetings.map(meeting => {
+          const day = language === "zh" ? `周${"一二三四五六日"[meeting.day - 1]}` : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][meeting.day - 1];
+          return `${day} ${meeting.start}–${meeting.end}`;
+        }).join("; ");
+        const item = el("div", "scheduled-summary-item");
+        item.style.setProperty("--category-color", colorFor(course.category_id));
+        item.append(el("strong", "", course.title), el("span", "", meetings), el("small", "", registrationLabel(course)));
+        summaryList.append(item);
+      });
+      scheduledSummary.append(summaryList);
+    }
+    const unscheduled = document.getElementById("unscheduled");
+    unscheduled.replaceChildren();
+    const items = selectedCourses().filter(course => !(selectedGroup(course)?.meetings || []).length);
+    if (items.length) {
+      unscheduled.append(el("h3", "", t("noTime")));
+      const list = el("div", "unscheduled-list");
+      items.forEach(course => {
+        const item = el("span", "unscheduled-item");
+        const timeLabel = course.schedule_status === "unpublished" ? t("noTimePublished") : course.schedule_status === "unverified" ? t("detailPending") : t("timeTba");
+        item.append(el("strong", "", course.title), el("span", "", timeLabel), el("small", "", registrationLabel(course)));
+        item.style.setProperty("--category-color", colorFor(course.category_id));
+        list.append(item);
+      });
+      unscheduled.append(list);
+    }
+  }
+
+  function renderEvidence() {
+    const sources = [];
+    const seen = new Set();
+    [state.program.source, ...state.categories.map(item => item.source), ...(state.aggregate_requirements || []).map(item => item.source), ...state.courses.flatMap(item => [item.source, ...(item.evidence || [])])].forEach(source => {
+      if (!source) return;
+      const key = `${source.kind}|${source.label}|${source.url || ""}|${source.observed_at}`;
+      if (!seen.has(key)) { seen.add(key); sources.push(source); }
+    });
+    const list = document.getElementById("evidence-list");
+    list.replaceChildren();
+    sources.forEach(source => {
+      const row = el("div", "evidence-item");
+      row.append(el("div", "evidence-kind", source.kind.replaceAll("_", " ")));
+      if (source.url) {
+        const link = el("a", "", source.label);
+        link.href = source.url;
+        link.target = "_blank";
+        link.rel = "noreferrer noopener";
+        row.append(link);
+      } else row.append(el("div", "", source.label));
+      row.append(el("div", "evidence-time", formatObserved(source.observed_at)));
+      list.append(row);
+    });
+  }
+
+  function containsSensitiveKey(value) {
+    if (Array.isArray(value)) return value.some(containsSensitiveKey);
+    if (value && typeof value === "object") return Object.entries(value).some(([key, child]) => SENSITIVE_KEY.test(key) || containsSensitiveKey(child));
+    return false;
+  }
+
+  function minimallyValidateImport(value) {
+    if (!value || typeof value !== "object" || value.schema_version !== "1.0") throw new Error("schema_version must be 1.0");
+    if (containsSensitiveKey(value)) throw new Error("file contains prohibited personal-data fields");
+    const target = value.planning_term?.target?.code;
+    if (!target || !Array.isArray(value.courses) || !Array.isArray(value.categories)) throw new Error("missing required planner fields");
+    if (value.courses.some(course => course.term !== target)) throw new Error("course term does not match target term");
+  }
+
+  document.getElementById("language-button").addEventListener("click", () => { language = language === "en" ? "zh" : "en"; render(); });
+  document.getElementById("search-input").addEventListener("input", renderCourses);
+  document.getElementById("category-filter").addEventListener("change", renderCourses);
+  document.getElementById("print-button").addEventListener("click", () => window.print());
+  document.getElementById("import-button").addEventListener("click", () => document.getElementById("import-file").click());
+  document.getElementById("import-file").addEventListener("change", async event => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    try {
+      const value = JSON.parse(await file.text());
+      minimallyValidateImport(value);
+      state = value;
+      activeTrackIds = new Set();
+      transientNotice = {message: t("imported"), error: false};
+      render();
+    } catch (error) {
+      transientNotice = {message: `${t("importError")}: ${error.message}`, error: true};
+      renderNotices();
+    } finally { event.target.value = ""; }
+  });
+  document.getElementById("export-button").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(state, null, 2)], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `tum-elective-plan-${state.planning_term.target.code}.json`;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+
+  document.getElementById("select-visible-button").addEventListener("click", () => {
+    filteredCourses().forEach(course => { if (course.status !== "enrolled") course.status = "planned"; }); render();
+  });
+  document.getElementById("clear-visible-button").addEventListener("click", () => {
+    filteredCourses().forEach(course => { if (course.status !== "enrolled") course.status = "candidate"; }); render();
+  });
+  function applyViewScale() {
+    const font = document.getElementById("font-scale").value;
+    const calendar = document.getElementById("calendar-scale").value;
+    document.documentElement.style.fontSize = `${font}%`;
+    document.documentElement.style.setProperty("--calendar-width", `${calendar}%`);
+    document.getElementById("font-scale-output").textContent = `${font}%`;
+    document.getElementById("calendar-scale-output").textContent = `${calendar}%`;
+  }
+  document.getElementById("font-scale").addEventListener("input", applyViewScale);
+  document.getElementById("calendar-scale").addEventListener("input", applyViewScale);
+  applyViewScale();
+
+  render();
+})();
+</script>
+</body>
+</html>
